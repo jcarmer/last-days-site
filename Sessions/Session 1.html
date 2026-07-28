@@ -13,21 +13,96 @@
 			--text-muted: #a6adc8;
 			--interactive-accent: #89b4fa;
 			--font-interface: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+			--callout-info: #89b4fa;
+			--callout-warning: #f9e2af;
+			--callout-danger: #f38ba8;
+			--callout-tip: #a6e3a1;
 		}
 		body {
 			margin: 0;
-			padding: 24px;
+			padding: 32px 24px;
 			background-color: var(--background-primary);
 			color: var(--text-normal);
 			font-family: var(--font-interface);
 			line-height: 1.6;
 		}
 		.container {
-			max-width: 900px;
+			max-width: 920px;
 			margin: 0 auto;
 		}
-		.rpg-published-card {
+		h1, h2, h3, h4, h5, h6 {
+			color: #cba6f7;
+			margin-top: 1.4em;
+			margin-bottom: 0.6em;
+			line-height: 1.3;
+		}
+		a {
+			color: var(--interactive-accent);
+			text-decoration: none;
+		}
+		a:hover {
+			text-decoration: underline;
+		}
+		a.internal-link.muted {
+			color: var(--text-muted);
+			text-decoration: none;
+			cursor: default;
+			opacity: 0.85;
+		}
+		img.published-img {
+			max-width: 100%;
+			height: auto;
+			border-radius: 6px;
+			margin: 12px 0;
+		}
+		img.published-img.center {
+			display: block;
+			margin: 16px auto;
+		}
+		img.published-img.right {
+			float: right;
+			margin: 0 0 16px 16px;
+		}
+		img.published-img.left {
+			float: left;
+			margin: 0 16px 16px 0;
+		}
+		table {
+			width: 100%;
+			border-collapse: collapse;
 			margin: 16px 0;
+		}
+		th, td {
+			padding: 10px 14px;
+			border: 1px solid var(--background-modifier-border);
+			text-align: left;
+		}
+		th {
+			background-color: var(--background-secondary);
+			color: var(--interactive-accent);
+		}
+		blockquote, .callout {
+			margin: 16px 0;
+			padding: 14px 18px;
+			background-color: var(--background-secondary);
+			border-left: 4px solid var(--interactive-accent);
+			border-radius: 4px;
+		}
+		pre {
+			background-color: var(--background-secondary);
+			padding: 14px;
+			border-radius: 6px;
+			overflow-x: auto;
+			border: 1px solid var(--background-modifier-border);
+		}
+		code {
+			font-family: monospace;
+			background-color: rgba(255, 255, 255, 0.08);
+			padding: 2px 6px;
+			border-radius: 4px;
+		}
+		.rpg-published-card {
+			margin: 20px 0;
 		}
 		
 	</style>
@@ -35,13 +110,11 @@
 <body>
 	<div class="container">
 		<h1>Session 1</h1>
-		Members of the Peace Guard arrive in Velders, a small lumber village on the outskirts of the 
-
+		<p dir="auto">Members of the Peace Guard arrive in Velders, a small lumber village on the outskirts of the </p>
 <div class="rpg-published-card npc-link-card">
-<div style="padding:10px;border:1px dashed var(--text-error)" class="Card_card Card_compact"><div class="Card_cardBody"><span class="Text_error">⚠️ Referenced NPC &#x27;npc-julien-northcott-6018&#x27; not found in vault.</span></div></div>
+<div class="Card_card Card_compact" style="cursor:pointer;padding:10px 14px;border:1px solid var(--interactive-accent);transition:transform 0.1s ease"><div class="Card_cardBody"><div class="Layout_toolbar"><span class="Text_body"><strong>🧙‍♂️ Wizard Kareka</strong></span><span class="Badge_badge Badge_badgeAccent">♂️ Human Wizard</span><span class="Text_muted" style="font-size:0.82rem">🔗 Open Note ↗</span></div></div></div>
 </div>
-
-Kareka's Realm.
+<p dir="auto">Kareka's Realm.</p>
 	</div>
 </body>
 </html>

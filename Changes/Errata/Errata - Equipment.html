@@ -13,21 +13,96 @@
 			--text-muted: #a6adc8;
 			--interactive-accent: #89b4fa;
 			--font-interface: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+			--callout-info: #89b4fa;
+			--callout-warning: #f9e2af;
+			--callout-danger: #f38ba8;
+			--callout-tip: #a6e3a1;
 		}
 		body {
 			margin: 0;
-			padding: 24px;
+			padding: 32px 24px;
 			background-color: var(--background-primary);
 			color: var(--text-normal);
 			font-family: var(--font-interface);
 			line-height: 1.6;
 		}
 		.container {
-			max-width: 900px;
+			max-width: 920px;
 			margin: 0 auto;
 		}
-		.rpg-published-card {
+		h1, h2, h3, h4, h5, h6 {
+			color: #cba6f7;
+			margin-top: 1.4em;
+			margin-bottom: 0.6em;
+			line-height: 1.3;
+		}
+		a {
+			color: var(--interactive-accent);
+			text-decoration: none;
+		}
+		a:hover {
+			text-decoration: underline;
+		}
+		a.internal-link.muted {
+			color: var(--text-muted);
+			text-decoration: none;
+			cursor: default;
+			opacity: 0.85;
+		}
+		img.published-img {
+			max-width: 100%;
+			height: auto;
+			border-radius: 6px;
+			margin: 12px 0;
+		}
+		img.published-img.center {
+			display: block;
+			margin: 16px auto;
+		}
+		img.published-img.right {
+			float: right;
+			margin: 0 0 16px 16px;
+		}
+		img.published-img.left {
+			float: left;
+			margin: 0 16px 16px 0;
+		}
+		table {
+			width: 100%;
+			border-collapse: collapse;
 			margin: 16px 0;
+		}
+		th, td {
+			padding: 10px 14px;
+			border: 1px solid var(--background-modifier-border);
+			text-align: left;
+		}
+		th {
+			background-color: var(--background-secondary);
+			color: var(--interactive-accent);
+		}
+		blockquote, .callout {
+			margin: 16px 0;
+			padding: 14px 18px;
+			background-color: var(--background-secondary);
+			border-left: 4px solid var(--interactive-accent);
+			border-radius: 4px;
+		}
+		pre {
+			background-color: var(--background-secondary);
+			padding: 14px;
+			border-radius: 6px;
+			overflow-x: auto;
+			border: 1px solid var(--background-modifier-border);
+		}
+		code {
+			font-family: monospace;
+			background-color: rgba(255, 255, 255, 0.08);
+			padding: 2px 6px;
+			border-radius: 4px;
+		}
+		.rpg-published-card {
+			margin: 20px 0;
 		}
 		
 	</style>
@@ -35,20 +110,19 @@
 <body>
 	<div class="container">
 		<h1>Errata - Equipment</h1>
-		### Greatmaul and Greatsword swapped dice:
-Greatmaul is now 3d4+STR (was 1d12+STR); This makes more sense as the Greatmaul would be best against heavy armor, now the mechanics reflect this.
-
-Greatsword is now 1d12+STR (was 3d4+STR).
-### Spear added
-For Mike Shea (the former Spear promoted to Greatspear)
-### Medical Kit added
-1 use, heals a Wound during a Field Rest.
-### Shortsword
-Cost went from 10→15 gp.
-## Armor tables relabeled
-ARMOR → DEFENSE (values unchanged).
-### Mithril Plate
-→ Adamantine Plate
+		<h3 data-heading="Greatmaul and Greatsword swapped dice:" dir="auto">Greatmaul and Greatsword swapped dice:</h3>
+<p dir="auto">Greatmaul is now 3d4+STR (was 1d12+STR); This makes more sense as the Greatmaul would be best against heavy armor, now the mechanics reflect this.</p>
+<p dir="auto">Greatsword is now 1d12+STR (was 3d4+STR).</p>
+<h3 data-heading="Spear added" dir="auto">Spear added</h3>
+<p dir="auto">For Mike Shea (the former Spear promoted to Greatspear)</p>
+<h3 data-heading="Medical Kit added" dir="auto">Medical Kit added</h3>
+<p dir="auto">1 use, heals a Wound during a Field Rest.</p>
+<h3 data-heading="Shortsword" dir="auto">Shortsword</h3>
+<p dir="auto">Cost went from 10→15 gp.</p>
+<h2 data-heading="Armor tables relabeled" dir="auto">Armor tables relabeled</h2>
+<p dir="auto">ARMOR → DEFENSE (values unchanged).</p>
+<h3 data-heading="Mithril Plate" dir="auto">Mithril Plate</h3>
+<p dir="auto">→ Adamantine Plate</p>
 	</div>
 </body>
 </html>
