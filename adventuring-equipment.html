@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Adventuring Equipment</title>
+	<style>
+		:root {
+			--background-primary: #1e1e2e;
+			--background-secondary: #181825;
+			--background-modifier-border: #313244;
+			--text-normal: #cdd6f4;
+			--text-muted: #a6adc8;
+			--interactive-accent: #89b4fa;
+			--font-interface: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+			--callout-info: #89b4fa;
+			--callout-warning: #f9e2af;
+			--callout-danger: #f38ba8;
+			--callout-tip: #a6e3a1;
+		}
+		body {
+			margin: 0;
+			padding: 32px 24px;
+			background-color: var(--background-primary);
+			color: var(--text-normal);
+			font-family: var(--font-interface);
+			line-height: 1.6;
+		}
+		.container {
+			max-width: 920px;
+			margin: 0 auto;
+		}
+		h1, h2, h3, h4, h5, h6 {
+			color: #cba6f7;
+			margin-top: 1.4em;
+			margin-bottom: 0.6em;
+			line-height: 1.3;
+		}
+		a {
+			color: var(--interactive-accent);
+			text-decoration: none;
+		}
+		a:hover {
+			text-decoration: underline;
+		}
+		a.internal-link.muted {
+			color: var(--text-muted);
+			text-decoration: none;
+			cursor: default;
+			opacity: 0.85;
+		}
+		img.published-img {
+			max-width: 100%;
+			height: auto;
+			border-radius: 6px;
+			margin: 12px 0;
+		}
+		img.published-img.center {
+			display: block;
+			margin: 16px auto;
+		}
+		img.published-img.right {
+			float: right;
+			margin: 0 0 16px 16px;
+		}
+		img.published-img.left {
+			float: left;
+			margin: 0 16px 16px 0;
+		}
+		table {
+			width: 100%;
+			border-collapse: collapse;
+			margin: 16px 0;
+		}
+		th, td {
+			padding: 10px 14px;
+			border: 1px solid var(--background-modifier-border);
+			text-align: left;
+		}
+		th {
+			background-color: var(--background-secondary);
+			color: var(--interactive-accent);
+		}
+		blockquote, .callout {
+			margin: 16px 0;
+			padding: 14px 18px;
+			background-color: var(--background-secondary);
+			border-left: 4px solid var(--interactive-accent);
+			border-radius: 4px;
+		}
+		pre {
+			background-color: var(--background-secondary);
+			padding: 14px;
+			border-radius: 6px;
+			overflow-x: auto;
+			border: 1px solid var(--background-modifier-border);
+		}
+		code {
+			font-family: monospace;
+			background-color: rgba(255, 255, 255, 0.08);
+			padding: 2px 6px;
+			border-radius: 4px;
+		}
+		.rpg-published-card {
+			margin: 20px 0;
+		}
+		
+	</style>
+</head>
+<body>
+	<div class="container">
+		<h1>Adventuring Equipment</h1>
+		<p dir="auto"><strong>Healing Potions</strong><br>
+Healing potions are deep, shimmering red elixirs with a refreshing, effervescent taste. These potions are crucial for quick recovery, though their availability is limited. Small towns may have only a few, while cities offer more (but they are not in unlimited supply). The wealthy often use healing potions as a display of affluence, incorporating them into elaborate mixed drinks at social events to showcase their status. Potions require one action to drink or to administer to an adjacent willing creature.</p>
+<p dir="auto"><strong>Torches &amp; Lanterns</strong><br>
+Heroes cannot typically see in the dark. Fighting in the dark imposes the Blinded condition. Heroes can bring a lantern or torch to light their way in the dark as long as they have a hand free (or some other way) to hold it. A torch typically lasts for 1 dungeon (or 1 level of a very large one). A lamp with oil can typically last for 1 entire outing, until your next Safe Rest. Torches and lanterns cast light up to <strong>6 spaces</strong> away; beyond this is darkness.</p>
+<div data-callout-metadata="" data-callout-fold="-" data-callout="warning" class="callout is-collapsible is-collapsed node-insert-event"><div class="callout-title" dir="auto"><div class="callout-icon"><svg width="16" height="16"></svg></div><div class="callout-title-inner">Be Warned</div><div class="callout-fold is-collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-chevron-down"><path d="m6 9 6 6 6-6"></path></svg></div></div><div class="callout-content" style="display: none;">
+<p dir="auto">Denizens of the dark may not appreciate the light and may attack the light bearers first. Certain spells (e.g., Fire, Lightning, and Radiant) may cause flashes of light as well and draw unwanted attention!</p>
+</div></div>
+<p dir="auto"><strong>Equipment Availability</strong><br>
+Costs for mundane items typically range from a few silver pieces to a few gold pieces. If you can find an artisan, you can commission them to create something for you—basically anything you can think of that their level of technology could support. The more ornate, the higher the price. Commissioning the creation of a special item will typically start around 50 gp and only go up from there. Smaller towns will have fewer items and artisans than larger cities.</p>
+<p dir="auto"><strong>Misc. Adventuring Equipment</strong></p>
+<table>
+<thead>
+<tr>
+<th>ITEM</th>
+<th>PROPERTIES</th>
+<th>COST</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Healing Potion</td>
+<td>(action) Heal 2d4+4 HP</td>
+<td>50 gp</td>
+</tr>
+<tr>
+<td>Greater Healing Potion</td>
+<td>(action) Heal 3d6+6 HP</td>
+<td>150 gp</td>
+</tr>
+<tr>
+<td>Supreme Healing Potion</td>
+<td>(action) Heal 4d8+8 HP</td>
+<td>450 gp</td>
+</tr>
+<tr>
+<td>Torch (stack of 2)</td>
+<td>For when it's dark. 1 use each.</td>
+<td>5 sp</td>
+</tr>
+<tr>
+<td>Lantern &amp; Oil</td>
+<td>Like a torch, but not as cool (refill: 1 gp)</td>
+<td>10 gp</td>
+</tr>
+<tr>
+<td>Vial of Pitch</td>
+<td>Sticky, and VERY flammable</td>
+<td>2 gp</td>
+</tr>
+<tr>
+<td>Rope (50 ft.)</td>
+<td>You always need rope</td>
+<td>10 gp</td>
+</tr>
+<tr>
+<td>Chain (10 ft.)</td>
+<td>Like rope, but stronger (and heavy)</td>
+<td>50 gp</td>
+</tr>
+<tr>
+<td>Bucket</td>
+<td>Also works as a hat in a pinch!</td>
+<td>1 gp</td>
+</tr>
+<tr>
+<td>Padlock &amp; Key</td>
+<td>Lock it or lose it</td>
+<td>3 gp</td>
+</tr>
+<tr>
+<td>Mirror</td>
+<td>For medusas AND spinach teeth</td>
+<td>4 gp</td>
+</tr>
+<tr>
+<td>Telescope</td>
+<td>Arrr</td>
+<td>10 gp</td>
+</tr>
+<tr>
+<td>Magnifying Glass</td>
+<td>Make the small, big</td>
+<td>5 gp</td>
+</tr>
+<tr>
+<td>Chalk</td>
+<td>Not JUST for kids</td>
+<td>1 sp</td>
+</tr>
+<tr>
+<td>Shovel</td>
+<td>Sometimes you need a hole dug</td>
+<td>3 gp</td>
+</tr>
+<tr>
+<td>Pulley</td>
+<td>Pull down, go up</td>
+<td>3 gp</td>
+</tr>
+<tr>
+<td>Grappling Hook</td>
+<td>For climbing or catching BIG fish</td>
+<td>4 gp</td>
+</tr>
+<tr>
+<td>Quiver &amp; Ammo</td>
+<td>Don't leave home without it</td>
+<td>10 gp</td>
+</tr>
+<tr>
+<td>Saw</td>
+<td>For cutting lumber</td>
+<td>4 gp</td>
+</tr>
+<tr>
+<td>Soap</td>
+<td>Useless</td>
+<td>1 sp</td>
+</tr>
+<tr>
+<td>Strange Plant</td>
+<td>Who knows?</td>
+<td>5 sp</td>
+</tr>
+<tr>
+<td>Shiny Object</td>
+<td>Worthless, but VERY pretty</td>
+<td>1 sp</td>
+</tr>
+<tr>
+<td>Lock Pick</td>
+<td>It's not mine, honest!</td>
+<td>5 gp</td>
+</tr>
+<tr>
+<td>Bell</td>
+<td>For service</td>
+<td>2 gp</td>
+</tr>
+<tr>
+<td>Dice</td>
+<td>LOTS of fun</td>
+<td>5 sp</td>
+</tr>
+<tr>
+<td>Blanket</td>
+<td>Warm &amp; fuzzy</td>
+<td>1 gp</td>
+</tr>
+<tr>
+<td>Hunting Trap</td>
+<td>Snap snap, don't lose a finger!</td>
+<td>10 gp</td>
+</tr>
+<tr>
+<td>Camping Supplies</td>
+<td>Bedroll, rations, simple tent</td>
+<td>5 gp</td>
+</tr>
+<tr>
+<td>Crowbar</td>
+<td>It's LIKE a key</td>
+<td>2 gp</td>
+</tr>
+<tr>
+<td>Pitons</td>
+<td>Metal spikes, for sealing doors</td>
+<td>5 gp</td>
+</tr>
+<tr>
+<td>Manacles</td>
+<td>For when someone has been bad</td>
+<td>3 gp</td>
+</tr>
+<tr>
+<td>Large Sack</td>
+<td>Like a BIG pocket</td>
+<td>5 sp</td>
+</tr>
+<tr>
+<td>Instrument</td>
+<td>Drums, Horn, Lyre, Flute, etc.</td>
+<td>5-50 gp</td>
+</tr>
+</tbody>
+</table>
+<div data-callout-metadata="" data-callout-fold="-" data-callout="faq" class="callout is-collapsible is-collapsed node-insert-event"><div class="callout-title" dir="auto"><div class="callout-icon"><svg width="16" height="16"></svg></div><div class="callout-title-inner">What About...?</div><div class="callout-fold is-collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-chevron-down"><path d="m6 9 6 6 6-6"></path></svg></div></div><div class="callout-content" style="display: none;">
+<p dir="auto">These are not all of the items available for purchase, merely a sampling. If you can think of it, you can likely buy it!</p>
+</div></div>
+	</div>
+</body>
+</html>
