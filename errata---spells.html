@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Errata - Spells</title>
+	<style>
+		:root {
+			--background-primary: #1e1e2e;
+			--background-secondary: #181825;
+			--background-modifier-border: #313244;
+			--text-normal: #cdd6f4;
+			--text-muted: #a6adc8;
+			--interactive-accent: #89b4fa;
+			--font-interface: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+			--callout-info: #89b4fa;
+			--callout-warning: #f9e2af;
+			--callout-danger: #f38ba8;
+			--callout-tip: #a6e3a1;
+		}
+		body {
+			margin: 0;
+			padding: 32px 24px;
+			background-color: var(--background-primary);
+			color: var(--text-normal);
+			font-family: var(--font-interface);
+			line-height: 1.6;
+		}
+		.container {
+			max-width: 920px;
+			margin: 0 auto;
+		}
+		h1, h2, h3, h4, h5, h6 {
+			color: #cba6f7;
+			margin-top: 1.4em;
+			margin-bottom: 0.6em;
+			line-height: 1.3;
+		}
+		a {
+			color: var(--interactive-accent);
+			text-decoration: none;
+		}
+		a:hover {
+			text-decoration: underline;
+		}
+		a.internal-link.muted {
+			color: var(--text-muted);
+			text-decoration: none;
+			cursor: default;
+			opacity: 0.85;
+		}
+		img.published-img {
+			max-width: 100%;
+			height: auto;
+			border-radius: 6px;
+			margin: 12px 0;
+		}
+		img.published-img.center {
+			display: block;
+			margin: 16px auto;
+		}
+		img.published-img.right {
+			float: right;
+			margin: 0 0 16px 16px;
+		}
+		img.published-img.left {
+			float: left;
+			margin: 0 16px 16px 0;
+		}
+		table {
+			width: 100%;
+			border-collapse: collapse;
+			margin: 16px 0;
+		}
+		th, td {
+			padding: 10px 14px;
+			border: 1px solid var(--background-modifier-border);
+			text-align: left;
+		}
+		th {
+			background-color: var(--background-secondary);
+			color: var(--interactive-accent);
+		}
+		blockquote, .callout {
+			margin: 16px 0;
+			padding: 14px 18px;
+			background-color: var(--background-secondary);
+			border-left: 4px solid var(--interactive-accent);
+			border-radius: 4px;
+		}
+		pre {
+			background-color: var(--background-secondary);
+			padding: 14px;
+			border-radius: 6px;
+			overflow-x: auto;
+			border: 1px solid var(--background-modifier-border);
+		}
+		code {
+			font-family: monospace;
+			background-color: rgba(255, 255, 255, 0.08);
+			padding: 2px 6px;
+			border-radius: 4px;
+		}
+		.rpg-published-card {
+			margin: 20px 0;
+		}
+		
+	</style>
+</head>
+<body>
+	<div class="container">
+		<h1>Errata - Spells</h1>
+		<h2 data-heading="Defensive Spells Clarified" dir="auto">Defensive Spells Clarified</h2>
+<p dir="auto">When attacked, Defend for free spells cost 0 actions but are castable only while Defending. </p>
+<h2 data-heading="Fire" dir="auto">Fire</h2>
+<p dir="auto">Heart's Fire: Range scaling improved to +2 Range per 5 levels (was +1), now limited to 1/round to prevent "optimal but unfun" play patterns. </p>
+<h2 data-heading="Enchant Weapon" dir="auto">Enchant Weapon</h2>
+<p dir="auto">Enchant Weapon: now Reach 8 (was touch). A needed flexibility bump. </p>
+<h2 data-heading="Flame Barrier" dir="auto">Flame Barrier</h2>
+<p dir="auto">Flame Barrier: Improved to better compete with Frost Armor and give it a better niche. Now an AoE, the damage and Smoldering now hits all creatures within Reach 1 when you are attacked in melee (was: only the creatures attacking you); no longer "ignoring armor" upcast is now +KEY damage OR +1 Reach. </p>
+<h2 data-heading="Pyroclasm" dir="auto">Pyroclasm</h2>
+<p dir="auto">Pyroclasm: no longer ignores armor (not needed with updated armor system) upcast improved from "+1 Reach, +2 damage" to "Advantage 1, +1 Reach." for more consistently solid rolls and less math. </p>
+<h2 data-heading="Fiery Embrace" dir="auto">Fiery Embrace</h2>
+<p dir="auto">Fiery Embrace: upcast now grants +1 ally and +2 Reach. </p>
+<h2 data-heading="Dragonform" dir="auto">Dragonform</h2>
+<p dir="auto">Dragonform: Immolating Breath's save is no longer a fixed DC 20 DEX save, uses the hero’s normal save DC. </p>
+<hr>
+<h2 data-heading="Ice" dir="auto">Ice</h2>
+<p dir="auto">Cryosleep: the sleep save is now WIL (was STR) and the ambiguous "wake-an-ally" action was removed (damage-only wakeups now). </p>
+<h2 data-heading="Arctic Blast" dir="auto">Arctic Blast</h2>
+<p dir="auto">Arctic Blast: removed the STR save and Incapacitated effect. Already Hampered creatures are Restrained automatically. </p>
+<h2 data-heading="Arctic Annihilation" dir="auto">Arctic Annihilation</h2>
+<p dir="auto">Arctic Annihilation: Reworded. Encased targets are no longer also Incapacitated; no longer restricted to "objects or willing creatures" — now "any targets you choose". </p>
+<hr>
+<h2 data-heading="Lightning" dir="auto">Lightning</h2>
+<p dir="auto">Zap: The miss self-damage no longer scales, it now applies on hit only. High-level scaling reduced to +4 damage per 5 levels (was +6) to match other lightning spells, and make it less punishing at higher levels. </p>
+<h2 data-heading="Arc Lightning" dir="auto">Arc Lightning</h2>
+<p dir="auto">Arc Lightning: no longer self-strikes on a miss. Not needed for balance, was a bit too punishing. </p>
+<h2 data-heading="Alacrity" dir="auto">Alacrity</h2>
+<p dir="auto">Alacrity: Reworked to be more useful. It is still castable to teleport while Defending (after damage) but can now also be cast during your turn to teleport up to your Speed for 0 actions. </p>
+<h2 data-heading="Electrocharge" dir="auto">Electrocharge</h2>
+<p dir="auto">Electrocharge: touch → Reach 4. </p>
+<h2 data-heading="Ride the Lightning" dir="auto">Ride the Lightning</h2>
+<p dir="auto">Ride the Lightning: Save removed, any creature knockedback 2 or more is also knocked Prone, Dazed and deafened automatically. Upcast: +1 knockback. </p>
+<hr>
+<h2 data-heading="Wind" dir="auto">Wind</h2>
+<p dir="auto">Razor Wind: now choose — roll with advantage OR also damage 1 adjacent target (was: always splashed to 1 adjacent target) giving utility even when enemies are not adjacent; high-level scaling improved to +3 damage per 5 levels (was +2), needed to keep up with other cantrips. </p>
+<h2 data-heading="Breath of Life" dir="auto">Breath of Life</h2>
+<p dir="auto">Breath of Life: heals 1d4 HP (was a flat 1 HP); new: if healed for 4+, the Dying creature also regains 1 action; scaling now also improves healing. </p>
+<h2 data-heading="Blustery Gale" dir="auto">Blustery Gale</h2>
+<p dir="auto">Blustery Gale: Knockback simplified to a flat 2 spaces (per-size scaling moved into the general forced-movement rule). </p>
+<h2 data-heading="Barrier of Wind" dir="auto">Barrier of Wind</h2>
+<p dir="auto">Barrier of Wind: Reworked to be more useful. Was: Ranged attacks have disadvantage against you this round. Now: Ranged attacks deal half damage vs you this round; and can be upcast to extend the protection to nearby creatures (was +3 Armor). Disadvantage was simply not strong enough compared to other defensive spells. Frost Shield was always better, but now it has a powerful niche. </p>
+<h2 data-heading="Fly" dir="auto">Fly</h2>
+<p dir="auto">Fly: the target can now move KEY spaces for free on their turn (new); upcast now +1 target and +4 Reach. The fly speed value (12) was removed (the creature's normal speed still applies—but they can FLY!). Was mostly just an out of combat utility spell, now more useful in combat. </p>
+<h2 data-heading="Updraft" dir="auto">Updraft</h2>
+<p dir="auto">Updraft: Reworked, great idea, but it was both the worst spell in the game AND the longest one to resolve. Cost reduced from 3 → 2 actions. Was: "20 damage minus a DEX save; on 10+ damage, they land Prone and Dazed." Upcast: +2 damage (was +2 Range, +1 area). Same idea, much better value and quicker to resolve. </p>
+<hr>
+<h2 data-heading="Radiant" dir="auto">Radiant</h2>
+<p dir="auto">Rebuke: Removed "does not miss". It was a far too powerful 2nd or 3rd action and encouraged attack, attack, attack a bit too much, still powerful vs undead, cover, and armored foes, but no longer feels like a required 3rd action. </p>
+<h2 data-heading="True Strike" dir="auto">True Strike</h2>
+<p dir="auto">True Strike: Was a bit weak, buffed to: now ignores ALL disadvantage and grants +1 Reach on the next melee attack this encounter. </p>
+<h2 data-heading="Warding Bond" dir="auto">Warding Bond</h2>
+<p dir="auto">Warding Bond: Competed with Updraft for worst spell in the game. Was: 1 action, lasts 1 minute, ward takes half damage and you take the other half; upcast +1 creature. Now: costs 0 actions, and requires concentration (this is a stealth buff, as the caster previously had no way to end it early and would die prematurely because of it!) and damage reduction for both the caster and the ward (–2) from damage shared this way. Upcast +2 damage reduction. Now it is a much more useful spell! </p>
+<h2 data-heading="Shield of Justice" dir="auto">Shield of Justice</h2>
+<p dir="auto">Shield of Justice: Reworked. Was the best spell in the game (by a lot). Was: reflect radiant damage equal to the amount your Defend blocked. Now: attackers this round are Blind until the end of their next turn, and you deal damage back (ignoring armor) equal to the damage you take. Upcast: +5 Damage OR +5 Defense (was +5 Armor). </p>
+<h2 data-heading="Condemn and Vengeance" dir="auto">Condemn and Vengeance</h2>
+<p dir="auto">Condemn and Vengeance: trigger window clarified to "this round"; was "since your last turn" (same net effect). </p>
+<hr>
+<h2 data-heading="Necrotic" dir="auto">Necrotic</h2>
+<p dir="auto">Entice: Range 8 → 12; damage 1d4 → 1d4+KEY; the target now moves Primary Die spaces closer (was a flat 2). This spell needed a boost to keep up with other cantrips. </p>
+<h2 data-heading="Shadow Trap" dir="auto">Shadow Trap</h2>
+<p dir="auto">Shadow Trap: 2 → 1 action. For spells that do not have an immediate payoff, the price for entry needs to be lower for them to be competitive. </p>
+<h2 data-heading="Vampiric Greed" dir="auto">Vampiric Greed</h2>
+<p dir="auto">Vampiric Greed: STR save removed, upcast changed to Upcast: +1 Reach OR +10 Damage. </p>
+<h2 data-heading="Greater Shadow (Tier 4)" dir="auto">Greater Shadow (Tier 4)</h2>
+<p dir="auto">Greater Shadow (Tier 4) removed. Now a Shadowmancer only ability. Other classes being able to summon shadow minions didn't seem right, and them not having access to the ability to command them was an oddity. </p>
+<h2 data-heading="Vigor Mortis (Tier 4)" dir="auto">Vigor Mortis (Tier 4)</h2>
+<p dir="auto">Vigor Mortis (Tier 4) added: cast when an ally drops to 0 HP — while Dying they keep their max actions, skip STR saves to act, and damage causes 1 fewer Wound (min 1). Upcast: +10 temp HP. </p>
+<h2 data-heading="Creeping Death" dir="auto">Creeping Death</h2>
+<p dir="auto">Creeping Death: upcast changed to +10 damage (was +1d20). Same net effect, but less mathy. </p>
+<hr>
+<h2 data-heading="Utility Cantrips" dir="auto">Utility Cantrips</h2>
+<p dir="auto">Ice Disk: carries "moderately heavy weight" (was a hard 250 lb limit) to avoid any weird conversion math. </p>
+<h2 data-heading="Wintry Scrying" dir="auto">Wintry Scrying</h2>
+<p dir="auto">Wintry Scrying: casting time 10 minutes → 1 minute. </p>
+<h2 data-heading="Wind Whisper" dir="auto">Wind Whisper</h2>
+<p dir="auto">Wind Whisper: the 100-mile limit removed — "anywhere wind could reach." </p>
+<h2 data-heading="Spark Buddy" dir="auto">Spark Buddy</h2>
+<p dir="auto">Spark Buddy: the ~1 lb fetch limit removed.</p>
+	</div>
+</body>
+</html>

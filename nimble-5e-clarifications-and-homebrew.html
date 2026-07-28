@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Nimble 5E Clarifications and Homebrew</title>
+	<style>
+		:root {
+			--background-primary: #1e1e2e;
+			--background-secondary: #181825;
+			--background-modifier-border: #313244;
+			--text-normal: #cdd6f4;
+			--text-muted: #a6adc8;
+			--interactive-accent: #89b4fa;
+			--font-interface: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+			--callout-info: #89b4fa;
+			--callout-warning: #f9e2af;
+			--callout-danger: #f38ba8;
+			--callout-tip: #a6e3a1;
+		}
+		body {
+			margin: 0;
+			padding: 32px 24px;
+			background-color: var(--background-primary);
+			color: var(--text-normal);
+			font-family: var(--font-interface);
+			line-height: 1.6;
+		}
+		.container {
+			max-width: 920px;
+			margin: 0 auto;
+		}
+		h1, h2, h3, h4, h5, h6 {
+			color: #cba6f7;
+			margin-top: 1.4em;
+			margin-bottom: 0.6em;
+			line-height: 1.3;
+		}
+		a {
+			color: var(--interactive-accent);
+			text-decoration: none;
+		}
+		a:hover {
+			text-decoration: underline;
+		}
+		a.internal-link.muted {
+			color: var(--text-muted);
+			text-decoration: none;
+			cursor: default;
+			opacity: 0.85;
+		}
+		img.published-img {
+			max-width: 100%;
+			height: auto;
+			border-radius: 6px;
+			margin: 12px 0;
+		}
+		img.published-img.center {
+			display: block;
+			margin: 16px auto;
+		}
+		img.published-img.right {
+			float: right;
+			margin: 0 0 16px 16px;
+		}
+		img.published-img.left {
+			float: left;
+			margin: 0 16px 16px 0;
+		}
+		table {
+			width: 100%;
+			border-collapse: collapse;
+			margin: 16px 0;
+		}
+		th, td {
+			padding: 10px 14px;
+			border: 1px solid var(--background-modifier-border);
+			text-align: left;
+		}
+		th {
+			background-color: var(--background-secondary);
+			color: var(--interactive-accent);
+		}
+		blockquote, .callout {
+			margin: 16px 0;
+			padding: 14px 18px;
+			background-color: var(--background-secondary);
+			border-left: 4px solid var(--interactive-accent);
+			border-radius: 4px;
+		}
+		pre {
+			background-color: var(--background-secondary);
+			padding: 14px;
+			border-radius: 6px;
+			overflow-x: auto;
+			border: 1px solid var(--background-modifier-border);
+		}
+		code {
+			font-family: monospace;
+			background-color: rgba(255, 255, 255, 0.08);
+			padding: 2px 6px;
+			border-radius: 4px;
+		}
+		.rpg-published-card {
+			margin: 20px 0;
+		}
+		
+	</style>
+</head>
+<body>
+	<div class="container">
+		<h1>Nimble 5E Clarifications and Homebrew</h1>
+		<p dir="auto">There are a lot of places in the rules, where the exact definition is "up to the GM". I'm going to collect these here for reference. Additionally, any "Hombrew" additions will be documented here for reference.</p>
+<h1 data-heading="Hitpoints &amp; Wounds (Clarification)" dir="auto">Hitpoints &amp; Wounds (Clarification)</h1>
+<p dir="auto">NPC hit points represent their health. If you do damage to an enemy or monster, you've wounded them. You hit them with your sword, or fireball, or whatever.</p>
+<p dir="auto">Damage done to Heroes represents their endurance - their ability to continue to avoid being wounded. Taking damage doesn't mean you were hit, but rather that you expended your endurance / plot armor to avoid the hit.</p>
+<p dir="auto">Wounds can be received directly from some traps/monster abilities/etc.</p>
+<h1 data-heading="Resting (Clarification)" dir="auto">Resting (Clarification)</h1>
+<h2 data-heading="Catch Breath" dir="auto">Catch Breath</h2>
+<p dir="auto">Spend 10 minutes performing field medicine. Use any amount of Hit Dice individually (rolling each and adding your STR modifier) to recover that amount of HP.</p>
+<h2 data-heading="Make Camp" dir="auto">Make Camp</h2>
+<p dir="auto">When resting for 8 hours with adequate food and sleep, you may take the maximum value for every Hit Die expended instead of rolling. Add your STR modifier to each die as normal.</p>
+<h2 data-heading="Safe Rest" dir="auto">Safe Rest</h2>
+<p dir="auto">An overnight camp in the woods or dungeon is not a safe rest. A safe rest means a fortified &amp; stocked area where characters aren't hunting/gathering their food and where there are guards/walls to defend them. Generally, this will be in an inn or town, when the party isn't being actively pursued.</p>
+<h1 data-heading="Fortified Camp (Clarification/Homebrew)" dir="auto">Fortified Camp (Clarification/Homebrew)</h1>
+<p dir="auto">A fortified camp can be set up in an area that is relatively peaceful when the party isn't being pursued, but it requires a skill challenge to set up correctly and takes a full day of setup that doesn't as a safe rest.</p>
+<p dir="auto">If the skill challenge fails, the party will be subject to a random encounter or event and cannot attempt to set up another fortified camp until they have a Safe Rest.</p>
+<h1 data-heading="Healing (Clarification)" dir="auto">Healing (Clarification)</h1>
+<p dir="auto">Wounds do not automatically heal during just any safe rest. If no healer is available they take one week of safe rest per wound.</p>
+<p dir="auto">If a healer is available, they heal 1 wound per 6 mana spent per day of safe rest on any character, but a day spent healing is not a safe rest for them, so they would need to rest for a day while not healing others to restore their mana.</p>
+<h1 data-heading="Encumbrance (Clarification/Homebrew)" dir="auto">Encumbrance (Clarification/Homebrew)</h1>
+<p dir="auto">You have 10 + STR item slots. If your STR is negative, you can carry fewer than 10 items. Carrying "enough" ammo for each of your weapons (bolts, arrows, darts, throwing daggers, javelins, etc.) takes one slot. Carrying many small, related items (e.g., gold coins) takes one slot.</p>
+<p dir="auto">A pack animal can carry a "reasonable number of items" or about ~200 lbs for a horse or similar animal.</p>
+<h1 data-heading="Tactical Assessment (Homebrew)" dir="auto">Tactical Assessment (Homebrew)</h1>
+<p dir="auto">When you roll initiative, if you only end up with 1 action in the first round, you notice something in the environment you can make use of later. You do not have to declare what it is at this point.</p>
+<p dir="auto">If you have more than one action in the first turn, you can give up your extra actions for this token.</p>
+<p dir="auto">You gain an AoE ability you can use once on your turn, during this encounter, to create a rectangle covering up to 6 squares (not 6x6 which is 36 squares). You can use this for free (it does not require an action point).</p>
+<p dir="auto">Choose one of the following: </p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Damage</td>
+<td>1d6 damage to all enemies in affected area (does not count as an attack)</td>
+</tr>
+<tr>
+<td>Difficult Terrain</td>
+<td>Create a rectangle of difficult terrain (permanent)</td>
+</tr>
+<tr>
+<td>Dazed/Poison/Slowed</td>
+<td>Inflict all enemies in the affected area with the chosen condition (1 turn)</td>
+</tr>
+<tr>
+<td>Prone</td>
+<td>Enemies get a chance to save (DC 10+LVL) vs. DEX or STR or become Prone</td>
+</tr>
+</tbody>
+</table>
+<p dir="auto">You must narrate how you are accomplishing this - firing an arrow, casting a spell, throwing an object, etc. It must be physical in nature since it is based on the terrain / objects in the scene.</p>
+<h1 data-heading="Deflection Reaction: Shield (Clarification / Homebrew)" dir="auto">Deflection Reaction: Shield (Clarification / Homebrew)</h1>
+<p dir="auto">The rules state that as an alternative to adding your shield to your armor, you can take a free deflection reaction once per turn.</p>
+<p dir="auto">The homebrew ruling is that for simplicity and flexibility, you can do both. You add the shield to your armor value &amp; you can use the shield to deflect (remove the Shield's armor bonus from damage) for free, once each turn.</p>
+<p dir="auto">You can only carry one shield at a time.</p>
+<h1 data-heading="Disrupt Attack Reaction (Homebrew)" dir="auto">Disrupt Attack Reaction (Homebrew)</h1>
+<p dir="auto">You can use a reaction to grant an ally the ability to use the defend action for free against a blow from an enemy. This does not count against their limit of 1/defend per turn.</p>
+<p dir="auto">You must narrate how you helped them (e.g., fired an arrow at the enemy's weapon, shoved the enemy off balance, created a distracting illusion).</p>
+<p dir="auto">You must succeed at a DC 12 skill check related to your narrated action. If you succeed by more than 5 (DC 18+) your action point is refunded.</p>
+<p dir="auto">Regardless of the result, like other reactions, this reaction can only be used once per turn.</p>
+<h1 data-heading="Dungeon/Lair Exploration (Homebrew) (DM Facing)" dir="auto">Dungeon/Lair Exploration (Homebrew) (DM Facing)</h1>
+<p dir="auto">Every encounter where players are taking careful and/or risky actions is handled in the following way.</p>
+<p dir="auto">Every member of the party can take "safe actions" simultaneously (one action per player). Taking a safe action means you roll d20 with advantage and add your modifier against the DC for the action, as set by the DM. You always succeed at this roll, but if you roll under the DC we add another tension die to the pool.</p>
+<ul>
+<li dir="auto">Scout (Stealth &amp; Perception)
+<ul>
+<li dir="auto">Can substitute Naturecraft if in Wild</li>
+<li dir="auto">Players always get to see the next "area" and enemies if they have a scout</li>
+<li dir="auto">But if the Scout blunders their Perception or Stealth check, we add a die to tension pool</li>
+</ul>
+</li>
+<li dir="auto">Guard (Stealth &amp; Perception)
+<ul>
+<li dir="auto">Can substitute Naturecraft if in Wild</li>
+<li dir="auto">Allows guard to kill a single minion if they pass a Stealth check</li>
+<li dir="auto">Allows the party to position themselves is attacked from the direction the guard was protecting</li>
+</ul>
+</li>
+<li dir="auto">Investigate (Examination)
+<ul>
+<li dir="auto">Can substitute Naturecraft if in Wild</li>
+<li dir="auto">Finds all clues, loot, traps, etc. in the area    </li>
+<li dir="auto">If more than one player investigating, players can reassign to Pick Lock / Disarm Trap in same turn</li>
+</ul>
+</li>
+<li dir="auto">Pick lock (Finesse)
+<ul>
+<li dir="auto">Picks the lock on an object</li>
+</ul>
+</li>
+<li dir="auto">Cover Tracks / Hide bodies (Stealth)
+<ul>
+<li dir="auto">Can substitute Naturecraft if in Wild</li>
+<li dir="auto">Enemies won't know if you were here</li>
+</ul>
+</li>
+<li dir="auto">Disarm Mundane Trap (Examination &amp; Finesse) (Naturecraft in Wild)
+<ul>
+<li dir="auto">Examination to discover (safe)</li>
+<li dir="auto">Finesse to disable (risky)</li>
+</ul>
+</li>
+<li dir="auto">Disarm Magical Trap / Lock / Block (Arcane &amp; Arcane/Finesse)
+<ul>
+<li dir="auto">Arcane to discover (safe)</li>
+<li dir="auto">Arcane or Finesse to unlock (risky)</li>
+</ul>
+</li>
+</ul>
+<p dir="auto">Alternatively, any member of the party may take an "unsafe" action: you roll 1d20, add a die to the pool, and then roll the pool.</p>
+<p dir="auto">Any combat adds a die to the pool. Any combat that allows an enemy to take a turn counts as a risky action.</p>
+<p dir="auto">Whenever the die pool reaches 6, the pool is rolled. If there are five dice in the pool and a player makes a reckless, time consuming action, we roll the pool with 7 dice in it.</p>
+<p dir="auto">When we roll the die pool, if there are any 1's a complication occurs:</p>
+<h2 data-heading="Dungeon/Lair Complications" dir="auto">Dungeon/Lair Complications</h2>
+<table>
+<thead>
+<tr>
+<th>Result (2d10)</th>
+<th>Level</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2-4</td>
+<td>Rare</td>
+</tr>
+<tr>
+<td>5-6</td>
+<td>Major</td>
+</tr>
+<tr>
+<td>7-8</td>
+<td>Moderate</td>
+</tr>
+<tr>
+<td>9-13</td>
+<td>Moderate</td>
+</tr>
+<tr>
+<td>14-15</td>
+<td>Moderate</td>
+</tr>
+<tr>
+<td>16-17</td>
+<td>Major</td>
+</tr>
+<tr>
+<td>18-20</td>
+<td>Rare</td>
+</tr>
+</tbody>
+</table>
+	</div>
+</body>
+</html>
