@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Ancestries</title>
+	<style>
+		:root {
+			--background-primary: #1e1e2e;
+			--background-secondary: #181825;
+			--background-secondary-alt: #181825;
+			--background-modifier-border: #313244;
+			--background-modifier-form-field: #11111b;
+			--background-modifier-active-hover: #313244;
+			--text-normal: #cdd6f4;
+			--text-muted: #a6adc8;
+			--text-on-accent: #11111b;
+			--interactive-accent: #89b4fa;
+			--font-interface: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+			--font-text: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+			--callout-info: #89b4fa;
+			--callout-warning: #f9e2af;
+			--callout-danger: #f38ba8;
+			--callout-tip: #a6e3a1;
+		}
+		html {
+			overflow-y: auto !important;
+		}
+		body {
+			margin: 0;
+			padding: 32px 24px;
+			background-color: var(--background-primary);
+			color: var(--text-normal);
+			font-family: var(--font-interface);
+			line-height: 1.6;
+			overflow-y: auto !important;
+			pointer-events: auto !important;
+		}
+		.container {
+			max-width: 920px;
+			margin: 0 auto;
+		}
+		h1, h2, h3, h4, h5, h6 {
+			color: #cba6f7;
+			margin-top: 1.4em;
+			margin-bottom: 0.6em;
+			line-height: 1.3;
+		}
+		a {
+			color: var(--interactive-accent);
+			text-decoration: none;
+			pointer-events: auto !important;
+		}
+		a:hover {
+			text-decoration: underline;
+		}
+		a.internal-link.muted {
+			color: var(--text-muted);
+			text-decoration: none;
+			cursor: default;
+			opacity: 0.85;
+		}
+		img.published-img {
+			max-width: 100%;
+			height: auto;
+			border-radius: 6px;
+			margin: 12px 0;
+		}
+		img.published-img.center {
+			display: block;
+			margin: 16px auto;
+		}
+		img.published-img.right {
+			float: right;
+			margin: 0 0 16px 16px;
+		}
+		img.published-img.left {
+			float: left;
+			margin: 0 16px 16px 0;
+		}
+		table {
+			width: 100%;
+			border-collapse: collapse;
+			margin: 16px 0;
+		}
+		th, td {
+			padding: 10px 14px;
+			border: 1px solid var(--background-modifier-border);
+			text-align: left;
+		}
+		th {
+			background-color: var(--background-secondary);
+			color: var(--interactive-accent);
+		}
+		blockquote, .callout {
+			margin: 16px 0;
+			padding: 14px 18px;
+			background-color: var(--background-secondary);
+			border-left: 4px solid var(--interactive-accent);
+			border-radius: 4px;
+		}
+		pre {
+			background-color: var(--background-secondary);
+			padding: 14px;
+			border-radius: 6px;
+			overflow-x: auto;
+			border: 1px solid var(--background-modifier-border);
+		}
+		code {
+			font-family: monospace;
+			background-color: rgba(255, 255, 255, 0.08);
+			padding: 2px 6px;
+			border-radius: 4px;
+		}
+		.rpg-published-card {
+			margin: 20px 0;
+			background-color: var(--background-secondary);
+			border: 1px solid var(--background-modifier-border);
+			border-radius: 8px;
+			padding: 16px;
+			box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+		}
+		.rpg-published-card img {
+			max-width: 100%;
+			height: auto;
+			border-radius: 6px;
+		}
+		
+/* Shared UI Fallback Styles */
+.Flexbox_container { display: flex; width: 100%; box-sizing: border-box; }
+.Flexbox_inline { display: inline-flex; width: auto; }
+.Flexbox_child { box-sizing: border-box; min-width: 0; }
+.Text_body { color: var(--text-normal); font-family: var(--font-text, system-ui); }
+.Text_muted { color: var(--text-muted); font-family: var(--font-text, system-ui); font-size: 0.9em; }
+.Text_heading { color: var(--text-normal); font-weight: 600; margin-top: 0; margin-bottom: 0.5rem; }
+.Text_error { color: var(--text-error, #f38ba8); font-weight: 500; }
+.Text_success { color: var(--text-success, #a6e3a1); font-weight: 500; }
+.Text_pill { background-color: var(--background-modifier-active-hover, rgba(255,255,255,0.1)); color: var(--text-normal); padding: 2px 8px; border-radius: 9999px; font-size: 0.85em; font-weight: 500; display: inline-block; }
+.Card_card { border: 1px solid var(--background-modifier-border); background: var(--background-secondary-alt); border-radius: 10px; padding: 18px 22px; margin: 14px 0; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); font-family: var(--font-interface); }
+.Card_compact { padding: 10px 14px; margin: 6px 0; }
+.Card_cardHeader { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; padding-bottom: 8px; border-bottom: 1px solid var(--background-modifier-border); }
+.Card_cardTitle { margin: 0; font-size: 1.15em; font-weight: 700; color: var(--text-normal); }
+.Card_cardDescription { font-size: 0.9em; color: var(--text-muted); margin: 4px 0 14px 0; font-style: italic; }
+.Card_cardBody { margin: 10px 0; }
+.Card_cardFooter { margin-top: 14px; padding-top: 10px; border-top: 1px solid var(--background-modifier-border); }
+.Badge_badge { display: inline-flex; align-items: center; font-size: 0.8em; font-weight: 600; padding: 3px 10px; border-radius: 12px; line-height: 1.2; }
+.Badge_badgeAccent { background: var(--interactive-accent); color: var(--text-on-accent, #11111b); }
+.Badge_badgeMuted { background: var(--background-modifier-form-field); color: var(--text-muted); border: 1px solid var(--background-modifier-border); font-family: var(--font-monospace); }
+.Badge_badgeOutline { background: transparent; color: var(--text-normal); border: 1px solid var(--background-modifier-border); }
+.DetailRow_detailRow { display: flex; flex-direction: column; background: var(--background-secondary-alt); padding: 8px 12px; border-radius: 6px; border: 1px solid var(--background-modifier-border); }
+.DetailRow_detailLabel { font-size: 0.75em; text-transform: uppercase; color: var(--text-muted); font-weight: 600; letter-spacing: 0.5px; }
+.DetailRow_detailValue { font-size: 1em; font-weight: 600; color: var(--text-normal); }
+.Button_btn { cursor: pointer; font-weight: 600; padding: 6px 16px; border-radius: 6px; border: 1px solid var(--background-modifier-border); background: var(--background-primary); color: var(--text-normal); }
+.Button_modCta { background: var(--interactive-accent); color: var(--text-on-accent, #11111b); border: none; }
+.Layout_toolbar { display: flex; gap: 12px; align-items: center; margin-bottom: 1rem; }
+.Layout_formRow { display: flex; gap: 12px; align-items: center; margin-bottom: 12px; }
+.Layout_actionGroup { display: flex; gap: 8px; align-items: center; margin-top: 0.5rem; }
+.Forms_formField { display: flex; flex-direction: column; gap: 6px; margin-bottom: 12px; width: 100%; }
+.Forms_label { font-size: 0.85em; font-weight: 600; color: var(--text-normal); }
+.Forms_select, .Forms_input { width: 100%; padding: 6px 10px; background: var(--background-modifier-form-field); border: 1px solid var(--background-modifier-border); color: var(--text-normal); border-radius: 4px; }
+
+	</style>
+</head>
+<body>
+	<div class="container">
+		<h1>Ancestries</h1>
+		<p dir="auto">Your kin, lineage, heritage, or race—this is how your character was born and how others see you at first glance. You may be a dwarf raised in the mines under the mountain with countless other dwarves, or you may be an elf raised by goblins! It's up to you to choose how your character began. Choose 1 ancestry and add its bonus to your character sheet.</p>
+<div data-callout-metadata="" data-callout-fold="-" data-callout="tip" class="callout is-collapsible is-collapsed node-insert-event"><div class="callout-title" dir="auto"><div class="callout-icon"><svg width="16" height="16"></svg></div><div class="callout-title-inner">Flavor Is Free</div><div class="callout-fold is-collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-chevron-down"><path d="m6 9 6 6 6-6"></path></svg></div></div><div class="callout-content" style="display: none;">
+<p dir="auto">Want to play a Stout Halfling instead of an Elusive one? An Optimistic Human instead of Tenacious? As long as it makes sense and the GM is on board, go for it!</p>
+<p dir="auto">Want to be a leaping Frogfolk instead of a Bunbun? A Flameborn Kobold? A winged Fairy instead of a Birdfolk? A Badgerfolk instead of a Stoatling? As long as it makes sense and your GM is game, go for it!</p>
+</div></div>
+<div data-callout-metadata="" data-callout-fold="-" data-callout="faq" class="callout is-collapsible is-collapsed node-insert-event"><div class="callout-title" dir="auto"><div class="callout-icon"><svg width="16" height="16"></svg></div><div class="callout-title-inner">What About Half–Elves?</div><div class="callout-fold is-collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-chevron-down"><path d="m6 9 6 6 6-6"></path></svg></div></div><div class="callout-content" style="display: none;">
+<p dir="auto">Mix the ancestries however makes sense in your world. You can pick one ancestral bonus and use it instead of both, or use both half as effectively or half as often.</p>
+</div></div>
+<hr>
+<h1 data-heading="Common Ancestries" dir="auto">Common Ancestries</h1>
+<ul>
+<li dir="auto"><a data-href="Human" href="human.html" class="internal-link">Human</a></li>
+<li dir="auto"><a data-href="Dwarf" href="dwarf.html" class="internal-link">Dwarf</a></li>
+<li dir="auto"><a data-href="Elf" href="elf.html" class="internal-link">Elf</a></li>
+<li dir="auto"><a data-href="Halfling" href="halfling.html" class="internal-link">Halfling</a></li>
+<li dir="auto"><a data-href="Gnome" href="gnome.html" class="internal-link">Gnome</a></li>
+</ul>
+<h1 data-heading="Exotic Ancestries" dir="auto">Exotic Ancestries</h1>
+<p dir="auto">Your setting may or may not support these choices—check with your GM first before selecting one.</p>
+<hr>
+<ul>
+<li dir="auto"><a data-href="Bunbun" href="bunbun.html" class="internal-link">Bunbun</a></li>
+<li dir="auto"><a data-href="Dragonborn" href="dragonborn.html" class="internal-link">Dragonborn</a></li>
+<li dir="auto"><a data-href="Fiendkin" href="fiendkin.html" class="internal-link">Fiendkin</a></li>
+<li dir="auto"><a data-tooltip-position="top" aria-label="Heroes/Ancestries/Core Ancestries/Goblin" data-href="Heroes/Ancestries/Core Ancestries/Goblin" href="goblin.html" class="internal-link">Goblin</a></li>
+<li dir="auto"><a data-tooltip-position="top" aria-label="Heroes/Ancestries/Core Ancestries/Kobold" data-href="Heroes/Ancestries/Core Ancestries/Kobold" href="kobold.html" class="internal-link">Kobold</a></li>
+<li dir="auto"><a data-href="Orc" href="orc.html" class="internal-link">Orc</a></li>
+<li dir="auto"><a data-href="Birdfolk" href="birdfolk.html" class="internal-link">Birdfolk</a></li>
+<li dir="auto"><a data-href="Celestial" href="celestial.html" class="internal-link">Celestial</a></li>
+<li dir="auto"><a data-href="Changeling" href="changeling.html" class="internal-link">Changeling</a></li>
+<li dir="auto"><a data-href="Crystalborn" href="crystalborn.html" class="internal-link">Crystalborn</a></li>
+<li dir="auto"><a data-href="Dryad, Shroomling" href="dryad,-shroomling.html" class="internal-link">Dryad, Shroomling</a></li>
+<li dir="auto"><a data-href="Half-Giant" href="half-giant.html" class="internal-link">Half-Giant</a></li>
+<li dir="auto"><a data-href="Minotaur, Beastfolk" href="minotaur,-beastfolk.html" class="internal-link">Minotaur, Beastfolk</a></li>
+<li dir="auto"><a data-href="Oozeling, Construct" href="oozeling,-construct.html" class="internal-link">Oozeling, Construct</a></li>
+<li dir="auto"><a data-href="Planarbeing" href="planarbeing.html" class="internal-link">Planarbeing</a></li>
+<li dir="auto"><a data-href="Ratfolk" href="ratfolk.html" class="internal-link">Ratfolk</a></li>
+<li dir="auto"><a data-href="Stoatling" href="stoatling.html" class="internal-link">Stoatling</a></li>
+<li dir="auto"><a data-href="Turtlefolk" href="turtlefolk.html" class="internal-link">Turtlefolk</a></li>
+<li dir="auto"><a data-href="Wyrdling" href="wyrdling.html" class="internal-link">Wyrdling</a></li>
+</ul>
+<h1 data-heading="Nim+ Vol 1 Ancestries" dir="auto">Nim+ Vol 1 Ancestries</h1>
+<p dir="auto"><em>Use these ancestries the same way you would exotic ancestries from the core rules. Ask your Game Master how they fit into your game. Remember, flavor is free – features can be switched around if it makes sense for your table.</em></p>
+<hr>
+<ul>
+<li dir="auto"><a data-href="Mousefolk" href="mousefolk.html" class="internal-link">Mousefolk</a></li>
+<li dir="auto"><a data-href="Otterfolk" href="otterfolk.html" class="internal-link">Otterfolk</a></li>
+<li dir="auto"><a data-href="Foxfolk" href="foxfolk.html" class="internal-link">Foxfolk</a></li>
+<li dir="auto"><a data-href="Badgerfolk" href="badgerfolk.html" class="internal-link">Badgerfolk</a></li>
+<li dir="auto"><a data-href="Tidewalker" href="tidewalker.html" class="internal-link">Tidewalker</a></li>
+<li dir="auto"><a data-href="Deepwalker" href="deepwalker.html" class="internal-link">Deepwalker</a></li>
+<li dir="auto"><a data-href="Snakefolk" href="snakefolk.html" class="internal-link">Snakefolk</a></li>
+<li dir="auto"><a data-href="Scalekin" href="scalekin.html" class="internal-link">Scalekin</a></li>
+<li dir="auto"><a data-href="Catfolk" href="catfolk.html" class="internal-link">Catfolk</a></li>
+<li dir="auto"><a data-href="Slugling" href="slugling.html" class="internal-link">Slugling</a></li>
+<li dir="auto"><a data-href="Nasfara" href="nasfara.html" class="internal-link">Nasfara</a></li>
+<li dir="auto"><a data-href="Lupid" href="lupid.html" class="internal-link">Lupid</a></li>
+<li dir="auto"><a data-href="Dhampir" href="dhampir.html" class="internal-link">Dhampir</a></li>
+<li dir="auto"><a data-href="Werecursed" href="werecursed.html" class="internal-link">Werecursed</a></li>
+<li dir="auto"><a data-href="Jotunn" href="jotunn.html" class="internal-link">Jotunn</a></li>
+<li dir="auto"><a data-href="Pixie" href="pixie.html" class="internal-link">Pixie</a></li>
+<li dir="auto"><a data-href="Elemental Scion" href="elemental-scion.html" class="internal-link">Elemental Scion</a></li>
+<li dir="auto"><a data-href="Unbound Imp" href="unbound-imp.html" class="internal-link">Unbound Imp</a></li>
+<li dir="auto"><a data-href="Lichmarked" href="lichmarked.html" class="internal-link">Lichmarked</a></li>
+</ul>
+	</div>
+</body>
+</html>

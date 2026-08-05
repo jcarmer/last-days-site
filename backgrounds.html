@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Backgrounds</title>
+	<style>
+		:root {
+			--background-primary: #1e1e2e;
+			--background-secondary: #181825;
+			--background-secondary-alt: #181825;
+			--background-modifier-border: #313244;
+			--background-modifier-form-field: #11111b;
+			--background-modifier-active-hover: #313244;
+			--text-normal: #cdd6f4;
+			--text-muted: #a6adc8;
+			--text-on-accent: #11111b;
+			--interactive-accent: #89b4fa;
+			--font-interface: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+			--font-text: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+			--callout-info: #89b4fa;
+			--callout-warning: #f9e2af;
+			--callout-danger: #f38ba8;
+			--callout-tip: #a6e3a1;
+		}
+		html {
+			overflow-y: auto !important;
+		}
+		body {
+			margin: 0;
+			padding: 32px 24px;
+			background-color: var(--background-primary);
+			color: var(--text-normal);
+			font-family: var(--font-interface);
+			line-height: 1.6;
+			overflow-y: auto !important;
+			pointer-events: auto !important;
+		}
+		.container {
+			max-width: 920px;
+			margin: 0 auto;
+		}
+		h1, h2, h3, h4, h5, h6 {
+			color: #cba6f7;
+			margin-top: 1.4em;
+			margin-bottom: 0.6em;
+			line-height: 1.3;
+		}
+		a {
+			color: var(--interactive-accent);
+			text-decoration: none;
+			pointer-events: auto !important;
+		}
+		a:hover {
+			text-decoration: underline;
+		}
+		a.internal-link.muted {
+			color: var(--text-muted);
+			text-decoration: none;
+			cursor: default;
+			opacity: 0.85;
+		}
+		img.published-img {
+			max-width: 100%;
+			height: auto;
+			border-radius: 6px;
+			margin: 12px 0;
+		}
+		img.published-img.center {
+			display: block;
+			margin: 16px auto;
+		}
+		img.published-img.right {
+			float: right;
+			margin: 0 0 16px 16px;
+		}
+		img.published-img.left {
+			float: left;
+			margin: 0 16px 16px 0;
+		}
+		table {
+			width: 100%;
+			border-collapse: collapse;
+			margin: 16px 0;
+		}
+		th, td {
+			padding: 10px 14px;
+			border: 1px solid var(--background-modifier-border);
+			text-align: left;
+		}
+		th {
+			background-color: var(--background-secondary);
+			color: var(--interactive-accent);
+		}
+		blockquote, .callout {
+			margin: 16px 0;
+			padding: 14px 18px;
+			background-color: var(--background-secondary);
+			border-left: 4px solid var(--interactive-accent);
+			border-radius: 4px;
+		}
+		pre {
+			background-color: var(--background-secondary);
+			padding: 14px;
+			border-radius: 6px;
+			overflow-x: auto;
+			border: 1px solid var(--background-modifier-border);
+		}
+		code {
+			font-family: monospace;
+			background-color: rgba(255, 255, 255, 0.08);
+			padding: 2px 6px;
+			border-radius: 4px;
+		}
+		.rpg-published-card {
+			margin: 20px 0;
+			background-color: var(--background-secondary);
+			border: 1px solid var(--background-modifier-border);
+			border-radius: 8px;
+			padding: 16px;
+			box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+		}
+		.rpg-published-card img {
+			max-width: 100%;
+			height: auto;
+			border-radius: 6px;
+		}
+		
+/* Shared UI Fallback Styles */
+.Flexbox_container { display: flex; width: 100%; box-sizing: border-box; }
+.Flexbox_inline { display: inline-flex; width: auto; }
+.Flexbox_child { box-sizing: border-box; min-width: 0; }
+.Text_body { color: var(--text-normal); font-family: var(--font-text, system-ui); }
+.Text_muted { color: var(--text-muted); font-family: var(--font-text, system-ui); font-size: 0.9em; }
+.Text_heading { color: var(--text-normal); font-weight: 600; margin-top: 0; margin-bottom: 0.5rem; }
+.Text_error { color: var(--text-error, #f38ba8); font-weight: 500; }
+.Text_success { color: var(--text-success, #a6e3a1); font-weight: 500; }
+.Text_pill { background-color: var(--background-modifier-active-hover, rgba(255,255,255,0.1)); color: var(--text-normal); padding: 2px 8px; border-radius: 9999px; font-size: 0.85em; font-weight: 500; display: inline-block; }
+.Card_card { border: 1px solid var(--background-modifier-border); background: var(--background-secondary-alt); border-radius: 10px; padding: 18px 22px; margin: 14px 0; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); font-family: var(--font-interface); }
+.Card_compact { padding: 10px 14px; margin: 6px 0; }
+.Card_cardHeader { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; padding-bottom: 8px; border-bottom: 1px solid var(--background-modifier-border); }
+.Card_cardTitle { margin: 0; font-size: 1.15em; font-weight: 700; color: var(--text-normal); }
+.Card_cardDescription { font-size: 0.9em; color: var(--text-muted); margin: 4px 0 14px 0; font-style: italic; }
+.Card_cardBody { margin: 10px 0; }
+.Card_cardFooter { margin-top: 14px; padding-top: 10px; border-top: 1px solid var(--background-modifier-border); }
+.Badge_badge { display: inline-flex; align-items: center; font-size: 0.8em; font-weight: 600; padding: 3px 10px; border-radius: 12px; line-height: 1.2; }
+.Badge_badgeAccent { background: var(--interactive-accent); color: var(--text-on-accent, #11111b); }
+.Badge_badgeMuted { background: var(--background-modifier-form-field); color: var(--text-muted); border: 1px solid var(--background-modifier-border); font-family: var(--font-monospace); }
+.Badge_badgeOutline { background: transparent; color: var(--text-normal); border: 1px solid var(--background-modifier-border); }
+.DetailRow_detailRow { display: flex; flex-direction: column; background: var(--background-secondary-alt); padding: 8px 12px; border-radius: 6px; border: 1px solid var(--background-modifier-border); }
+.DetailRow_detailLabel { font-size: 0.75em; text-transform: uppercase; color: var(--text-muted); font-weight: 600; letter-spacing: 0.5px; }
+.DetailRow_detailValue { font-size: 1em; font-weight: 600; color: var(--text-normal); }
+.Button_btn { cursor: pointer; font-weight: 600; padding: 6px 16px; border-radius: 6px; border: 1px solid var(--background-modifier-border); background: var(--background-primary); color: var(--text-normal); }
+.Button_modCta { background: var(--interactive-accent); color: var(--text-on-accent, #11111b); border: none; }
+.Layout_toolbar { display: flex; gap: 12px; align-items: center; margin-bottom: 1rem; }
+.Layout_formRow { display: flex; gap: 12px; align-items: center; margin-bottom: 12px; }
+.Layout_actionGroup { display: flex; gap: 8px; align-items: center; margin-top: 0.5rem; }
+.Forms_formField { display: flex; flex-direction: column; gap: 6px; margin-bottom: 12px; width: 100%; }
+.Forms_label { font-size: 0.85em; font-weight: 600; color: var(--text-normal); }
+.Forms_select, .Forms_input { width: 100%; padding: 6px 10px; background: var(--background-modifier-form-field); border: 1px solid var(--background-modifier-border); color: var(--text-normal); border-radius: 4px; }
+
+	</style>
+</head>
+<body>
+	<div class="container">
+		<h1>Backgrounds</h1>
+		<p dir="auto">Backgrounds provide a glimpse into your character's past—how they were raised, the skills they honed before becoming an adventurer, or even their defining personality traits. Feel free to adapt or reimagine these backgrounds to suit your character's story. Choose 1 background:</p>
+<div data-callout-metadata="" data-callout-fold="-" data-callout="tip" class="callout is-collapsible is-collapsed node-insert-event"><div class="callout-title" dir="auto"><div class="callout-icon"><svg width="16" height="16"></svg></div><div class="callout-title-inner">Make It Your Own!</div><div class="callout-fold is-collapsed"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-chevron-down"><path d="m6 9 6 6 6-6"></path></svg></div></div><div class="callout-content" style="display: none;">
+<p dir="auto">Remember, backgrounds are just a starting point—you're free to adjust, reimagine, or completely rewrite them to suit your character's story. If you want to know a Utility Spell but don't like the Academy Dropout flavor, come up with a different reason why your character might know it. Maybe they learned it from a traveling bard or discovered it etched into an ancient relic.</p>
+<p dir="auto">Feel free to swap traits, change the flavor text, or blend backgrounds together. Haunted Past might become Blessed by Spirits if your character views their otherworldly voices as guardians rather than tormentors.</p>
+<p dir="auto">Work with your GM to ensure any changes align with your game's setting and are balanced with other backgrounds. These are here to inspire creativity—what you build with them is entirely up to you! </p>
+</div></div>
+<hr>
+<h1 data-heading="Core Backgrounds" dir="auto">Core Backgrounds</h1>
+<ul>
+<li dir="auto"><a data-href="(Former) Con Artist" href="(former)-con-artist.html" class="internal-link">(Former) Con Artist</a></li>
+<li dir="auto"><a data-href="(Secretly) Undead" href="(secretly)-undead.html" class="internal-link">(Secretly) Undead</a></li>
+<li dir="auto"><a data-href="Academy Dropout" href="academy-dropout.html" class="internal-link">Academy Dropout</a></li>
+<li dir="auto"><a data-href="Accidental Acrobat" href="accidental-acrobat.html" class="internal-link">Accidental Acrobat</a></li>
+<li dir="auto"><a data-href="Acrobat" href="acrobat.html" class="internal-link">Acrobat</a></li>
+<li dir="auto"><a data-href="At Home Underground" href="at-home-underground.html" class="internal-link">At Home Underground</a></li>
+<li dir="auto"><a data-href="Back Out of Retirement" href="back-out-of-retirement.html" class="internal-link">Back Out of Retirement</a></li>
+<li dir="auto"><a data-href="Bumblewise" href="bumblewise.html" class="internal-link">Bumblewise</a></li>
+<li dir="auto"><a data-href="Devoted Protector" href="devoted-protector.html" class="internal-link">Devoted Protector</a></li>
+<li dir="auto"><a data-href="Ear to the Ground" href="ear-to-the-ground.html" class="internal-link">Ear to the Ground</a></li>
+<li dir="auto"><a data-href="Fearless" href="fearless.html" class="internal-link">Fearless</a></li>
+<li dir="auto"><a data-href="Fey Touched" href="fey-touched.html" class="internal-link">Fey Touched</a></li>
+<li dir="auto"><a data-href="Haunted Past" href="haunted-past.html" class="internal-link">Haunted Past</a></li>
+<li dir="auto"><a data-href="History Buff" href="history-buff.html" class="internal-link">History Buff</a></li>
+<li dir="auto"><a data-href="Home at Sea" href="home-at-sea.html" class="internal-link">Home at Sea</a></li>
+<li dir="auto"><a data-href="Made a BAD Choice" href="made-a-bad-choice.html" class="internal-link">Made a BAD Choice</a></li>
+<li dir="auto"><a data-href="Raised by Goblins" href="raised-by-goblins.html" class="internal-link">Raised by Goblins</a></li>
+<li dir="auto"><a data-href="So Dumb I'm Smart Sometimes" href="so-dumb-i'm-smart-sometimes.html" class="internal-link">So Dumb I'm Smart Sometimes</a></li>
+<li dir="auto"><a data-href="Survivalist" href="survivalist.html" class="internal-link">Survivalist</a></li>
+<li dir="auto"><a data-href="Taste for the Finer Things" href="taste-for-the-finer-things.html" class="internal-link">Taste for the Finer Things</a></li>
+<li dir="auto"><a data-href="Tradesman, Artisan" href="tradesman,-artisan.html" class="internal-link">Tradesman, Artisan</a></li>
+<li dir="auto"><a data-href="What? I've Been Around" href="What? I've Been Around.html" class="internal-link">What? I've Been Around</a></li>
+<li dir="auto"><a data-href="Wild One" href="wild-one.html" class="internal-link">Wild One</a></li>
+<li dir="auto"><a data-href="Wily Underdog" href="wily-underdog.html" class="internal-link">Wily Underdog</a></li>
+</ul>
+<h1 data-heading="Nim+ Vol 1 Backgrounds" dir="auto">Nim+ Vol 1 Backgrounds</h1>
+<p dir="auto"><em>Additional backgrounds for all types of heroes.</em></p>
+<hr>
+<ul>
+<li dir="auto"><a data-href="Arena Fighter" href="arena-fighter.html" class="internal-link">Arena Fighter</a></li>
+<li dir="auto"><a data-href="Big Fella" href="big-fella.html" class="internal-link">Big Fella</a></li>
+<li dir="auto"><a data-href="Bounty Hunter" href="bounty-hunter.html" class="internal-link">Bounty Hunter</a></li>
+<li dir="auto"><a data-href="Common" href="common.html" class="internal-link">Common</a></li>
+<li dir="auto"><a data-href="Daydreamer" href="daydreamer.html" class="internal-link">Daydreamer</a></li>
+<li dir="auto"><a data-href="Determined" href="determined.html" class="internal-link">Determined</a></li>
+<li dir="auto"><a data-href="Disgraced Politician" href="disgraced-politician.html" class="internal-link">Disgraced Politician</a></li>
+<li dir="auto"><a data-href="Exile" href="exile.html" class="internal-link">Exile</a></li>
+<li dir="auto"><a data-href="Fearful" href="fearful.html" class="internal-link">Fearful</a></li>
+<li dir="auto"><a data-href="Field Chef" href="field-chef.html" class="internal-link">Field Chef</a></li>
+<li dir="auto"><a data-href="Forgemate" href="forgemate.html" class="internal-link">Forgemate</a></li>
+<li dir="auto"><a data-href="Hunted" href="hunted.html" class="internal-link">Hunted</a></li>
+<li dir="auto"><a data-href="Insecure" href="insecure.html" class="internal-link">Insecure</a></li>
+<li dir="auto"><a data-href="Iron Gut" href="iron-gut.html" class="internal-link">Iron Gut</a></li>
+<li dir="auto"><a data-href="Kind of a Big Deal" href="kind-of-a-big-deal.html" class="internal-link">Kind of a Big Deal</a></li>
+<li dir="auto"><a data-href="Long Lost" href="long-lost.html" class="internal-link">Long Lost</a></li>
+<li dir="auto"><a data-href="Out For Vengeance" href="out-for-vengeance.html" class="internal-link">Out For Vengeance</a></li>
+<li dir="auto"><a data-href="Overconfident" href="overconfident.html" class="internal-link">Overconfident</a></li>
+<li dir="auto"><a data-href="Overprepared" href="overprepared.html" class="internal-link">Overprepared</a></li>
+<li dir="auto"><a data-href="Peg Leg" href="peg-leg.html" class="internal-link">Peg Leg</a></li>
+<li dir="auto"><a data-href="Plucky Wannabe Hero" href="plucky-wannabe-hero.html" class="internal-link">Plucky Wannabe Hero</a></li>
+<li dir="auto"><a data-href="Scribe" href="scribe.html" class="internal-link">Scribe</a></li>
+<li dir="auto"><a data-href="Street-smart" href="street-smart.html" class="internal-link">Street-smart</a></li>
+<li dir="auto"><a data-href="Thuggish" href="thuggish.html" class="internal-link">Thuggish</a></li>
+<li dir="auto"><a data-href="Treasure Hunter" href="treasure-hunter.html" class="internal-link">Treasure Hunter</a></li>
+<li dir="auto"><a data-href="Wild Child" href="wild-child.html" class="internal-link">Wild Child</a></li>
+</ul>
+	</div>
+</body>
+</html>

@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Gear</title>
+	<style>
+		:root {
+			--background-primary: #1e1e2e;
+			--background-secondary: #181825;
+			--background-secondary-alt: #181825;
+			--background-modifier-border: #313244;
+			--background-modifier-form-field: #11111b;
+			--background-modifier-active-hover: #313244;
+			--text-normal: #cdd6f4;
+			--text-muted: #a6adc8;
+			--text-on-accent: #11111b;
+			--interactive-accent: #89b4fa;
+			--font-interface: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+			--font-text: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+			--callout-info: #89b4fa;
+			--callout-warning: #f9e2af;
+			--callout-danger: #f38ba8;
+			--callout-tip: #a6e3a1;
+		}
+		html {
+			overflow-y: auto !important;
+		}
+		body {
+			margin: 0;
+			padding: 32px 24px;
+			background-color: var(--background-primary);
+			color: var(--text-normal);
+			font-family: var(--font-interface);
+			line-height: 1.6;
+			overflow-y: auto !important;
+			pointer-events: auto !important;
+		}
+		.container {
+			max-width: 920px;
+			margin: 0 auto;
+		}
+		h1, h2, h3, h4, h5, h6 {
+			color: #cba6f7;
+			margin-top: 1.4em;
+			margin-bottom: 0.6em;
+			line-height: 1.3;
+		}
+		a {
+			color: var(--interactive-accent);
+			text-decoration: none;
+			pointer-events: auto !important;
+		}
+		a:hover {
+			text-decoration: underline;
+		}
+		a.internal-link.muted {
+			color: var(--text-muted);
+			text-decoration: none;
+			cursor: default;
+			opacity: 0.85;
+		}
+		img.published-img {
+			max-width: 100%;
+			height: auto;
+			border-radius: 6px;
+			margin: 12px 0;
+		}
+		img.published-img.center {
+			display: block;
+			margin: 16px auto;
+		}
+		img.published-img.right {
+			float: right;
+			margin: 0 0 16px 16px;
+		}
+		img.published-img.left {
+			float: left;
+			margin: 0 16px 16px 0;
+		}
+		table {
+			width: 100%;
+			border-collapse: collapse;
+			margin: 16px 0;
+		}
+		th, td {
+			padding: 10px 14px;
+			border: 1px solid var(--background-modifier-border);
+			text-align: left;
+		}
+		th {
+			background-color: var(--background-secondary);
+			color: var(--interactive-accent);
+		}
+		blockquote, .callout {
+			margin: 16px 0;
+			padding: 14px 18px;
+			background-color: var(--background-secondary);
+			border-left: 4px solid var(--interactive-accent);
+			border-radius: 4px;
+		}
+		pre {
+			background-color: var(--background-secondary);
+			padding: 14px;
+			border-radius: 6px;
+			overflow-x: auto;
+			border: 1px solid var(--background-modifier-border);
+		}
+		code {
+			font-family: monospace;
+			background-color: rgba(255, 255, 255, 0.08);
+			padding: 2px 6px;
+			border-radius: 4px;
+		}
+		.rpg-published-card {
+			margin: 20px 0;
+			background-color: var(--background-secondary);
+			border: 1px solid var(--background-modifier-border);
+			border-radius: 8px;
+			padding: 16px;
+			box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+		}
+		.rpg-published-card img {
+			max-width: 100%;
+			height: auto;
+			border-radius: 6px;
+		}
+		
+/* Shared UI Fallback Styles */
+.Flexbox_container { display: flex; width: 100%; box-sizing: border-box; }
+.Flexbox_inline { display: inline-flex; width: auto; }
+.Flexbox_child { box-sizing: border-box; min-width: 0; }
+.Text_body { color: var(--text-normal); font-family: var(--font-text, system-ui); }
+.Text_muted { color: var(--text-muted); font-family: var(--font-text, system-ui); font-size: 0.9em; }
+.Text_heading { color: var(--text-normal); font-weight: 600; margin-top: 0; margin-bottom: 0.5rem; }
+.Text_error { color: var(--text-error, #f38ba8); font-weight: 500; }
+.Text_success { color: var(--text-success, #a6e3a1); font-weight: 500; }
+.Text_pill { background-color: var(--background-modifier-active-hover, rgba(255,255,255,0.1)); color: var(--text-normal); padding: 2px 8px; border-radius: 9999px; font-size: 0.85em; font-weight: 500; display: inline-block; }
+.Card_card { border: 1px solid var(--background-modifier-border); background: var(--background-secondary-alt); border-radius: 10px; padding: 18px 22px; margin: 14px 0; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); font-family: var(--font-interface); }
+.Card_compact { padding: 10px 14px; margin: 6px 0; }
+.Card_cardHeader { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; padding-bottom: 8px; border-bottom: 1px solid var(--background-modifier-border); }
+.Card_cardTitle { margin: 0; font-size: 1.15em; font-weight: 700; color: var(--text-normal); }
+.Card_cardDescription { font-size: 0.9em; color: var(--text-muted); margin: 4px 0 14px 0; font-style: italic; }
+.Card_cardBody { margin: 10px 0; }
+.Card_cardFooter { margin-top: 14px; padding-top: 10px; border-top: 1px solid var(--background-modifier-border); }
+.Badge_badge { display: inline-flex; align-items: center; font-size: 0.8em; font-weight: 600; padding: 3px 10px; border-radius: 12px; line-height: 1.2; }
+.Badge_badgeAccent { background: var(--interactive-accent); color: var(--text-on-accent, #11111b); }
+.Badge_badgeMuted { background: var(--background-modifier-form-field); color: var(--text-muted); border: 1px solid var(--background-modifier-border); font-family: var(--font-monospace); }
+.Badge_badgeOutline { background: transparent; color: var(--text-normal); border: 1px solid var(--background-modifier-border); }
+.DetailRow_detailRow { display: flex; flex-direction: column; background: var(--background-secondary-alt); padding: 8px 12px; border-radius: 6px; border: 1px solid var(--background-modifier-border); }
+.DetailRow_detailLabel { font-size: 0.75em; text-transform: uppercase; color: var(--text-muted); font-weight: 600; letter-spacing: 0.5px; }
+.DetailRow_detailValue { font-size: 1em; font-weight: 600; color: var(--text-normal); }
+.Button_btn { cursor: pointer; font-weight: 600; padding: 6px 16px; border-radius: 6px; border: 1px solid var(--background-modifier-border); background: var(--background-primary); color: var(--text-normal); }
+.Button_modCta { background: var(--interactive-accent); color: var(--text-on-accent, #11111b); border: none; }
+.Layout_toolbar { display: flex; gap: 12px; align-items: center; margin-bottom: 1rem; }
+.Layout_formRow { display: flex; gap: 12px; align-items: center; margin-bottom: 12px; }
+.Layout_actionGroup { display: flex; gap: 8px; align-items: center; margin-top: 0.5rem; }
+.Forms_formField { display: flex; flex-direction: column; gap: 6px; margin-bottom: 12px; width: 100%; }
+.Forms_label { font-size: 0.85em; font-weight: 600; color: var(--text-normal); }
+.Forms_select, .Forms_input { width: 100%; padding: 6px 10px; background: var(--background-modifier-form-field); border: 1px solid var(--background-modifier-border); color: var(--text-normal); border-radius: 4px; }
+
+	</style>
+</head>
+<body>
+	<div class="container">
+		<h1>Gear</h1>
+		<h2 data-heading="Settlement Availability &amp; Shop Rules" dir="auto">Settlement Availability &amp; Shop Rules</h2>
+<p dir="auto">  Not every settlement boasts specialized craftsmen or alchemical workshops. Use the following guide to determine which shops exist and what inventory is stocked based on settlement size.</p>
+<table>
+<thead>
+<tr>
+<th align="left">Settlement Type</th>
+<th align="left">Population</th>
+<th align="left">Inventory &amp; Rarity Cap</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><strong>Village</strong></td>
+<td align="left">&lt; 1,000</td>
+<td align="left">Basic common items only; items &gt; 20 gp rare (1d3 stock).</td>
+</tr>
+<tr>
+<td align="left"><strong>Town</strong></td>
+<td align="left">1,000 – 5,000</td>
+<td align="left">Standard stock up to 100 gp; 1d4 Uncommon items.</td>
+</tr>
+<tr>
+<td align="left"><strong>City</strong></td>
+<td align="left">5,000 – 25,000</td>
+<td align="left">Full inventory up to 500 gp; custom commissions available.</td>
+</tr>
+<tr>
+<td align="left"><strong>Metropolis</strong></td>
+<td align="left">25,000+</td>
+<td align="left">Unlimited stock; masterwork tools, exotic imports, and rare items.</td>
+</tr>
+</tbody>
+</table>
+<h3 data-heading="Item Slot Weight Reference (Nimble 5E)" dir="auto">Item Slot Weight Reference (Nimble 5E)</h3>
+<ul>
+<li dir="auto">
+<p><strong>1 Slot</strong>: Weight up to 10 lbs. (Small tools, ropes, lanterns, individual compounds, bundled kits).</p>
+</li>
+<li dir="auto">
+<p><strong>2 Slots</strong>: Weight 11 lbs. to 40 lbs. (Heavy camping gear, small tents, portable rams, casks).</p>
+</li>
+<li dir="auto">
+<p><strong>3 Slots</strong>: Weight 41 lbs. to 100 lbs. (Large pavilion tents, heavy ladders, rolling mantlets).</p>
+</li>
+</ul>
+<h2 data-heading="1. The General Store &amp; Outfitter" dir="auto">1. The General Store &amp; Outfitter</h2>
+<p dir="auto">The backbone of frontier settlements and urban markets alike, providing essential survival gear, climbing tackle, and heavy exploration tools.</p>
+<ul>
+<li dir="auto"><strong>Suggested Proprietor Professions</strong>: General Merchant, Outfitter, Provisioner, Chandler, Dry-Goods Trader, Frontier Storekeeper.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">Item Name</th>
+<th align="left">Cost</th>
+<th align="left">Item Slots</th>
+<th align="left">Mechanics</th>
+<th align="left">Physical Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><strong>Torch (Stack of 4)</strong></td>
+<td align="left">1 gp</td>
+<td align="left">1 Slot</td>
+<td align="left">Burn 1 hour each. Sheds light up to 6 spaces (30 ft). Fighting in dark = Blinded. Deals 1 fire damage in melee.</td>
+<td align="left">Resinous pine-wood shafts tightly wrapped at the tip with bitumen-soaked pitch rags.</td>
+</tr>
+<tr>
+<td align="left"><strong>Lantern &amp; Oil</strong></td>
+<td align="left">10 gp</td>
+<td align="left">1 Slot</td>
+<td align="left">Burns 1 full outing (until next Safe Rest). Sheds light up to 6 spaces (30 ft). Refill oil costs 1 gp.</td>
+<td align="left">Sturdy brass-framed hooded lantern with adjustable mica glass shutters and top handle.</td>
+</tr>
+<tr>
+<td align="left"><strong>Hempen Rope (50 ft.)</strong></td>
+<td align="left">10 gp</td>
+<td align="left">1 Slot</td>
+<td align="left">Crucial climbing/binding tool. Can be knotted at 1-ft intervals for easier climbing. Holds up to 300 lbs.</td>
+<td align="left">Thick, three-strand twisted natural hemp fiber rope coiled and bound with twine.</td>
+</tr>
+<tr>
+<td align="left"><strong>Silk Rope (50 ft.)</strong></td>
+<td align="left">25 gp</td>
+<td align="left">1 Slot</td>
+<td align="left">Lightweight rope. Extremely strong (holds 500 lbs) and smooth for knotting.</td>
+<td align="left">Supple, tightly braided golden-white silk rope, exceptionally smooth and compact.</td>
+</tr>
+<tr>
+<td align="left"><strong>Grappling Hook</strong></td>
+<td align="left">4 gp</td>
+<td align="left">1 Slot</td>
+<td align="left">Anchors rope to ledges or battlements when thrown.</td>
+<td align="left">Four-pronged forged iron hook with a sturdy welded eyelet ring at the base.</td>
+</tr>
+<tr>
+<td align="left"><strong>Crowbar</strong></td>
+<td align="left">2 gp</td>
+<td align="left">1 Slot</td>
+<td align="left">Grants advantage on Might/STR checks to pry open doors, crates, or locked chests.</td>
+<td align="left">Heavy, L-shaped forged iron bar with a flattened chisel tip and split claw end.</td>
+</tr>
+<tr>
+<td align="left"><strong>Shovel</strong></td>
+<td align="left">3 gp</td>
+<td align="left">1 Slot</td>
+<td align="left">Digs 5-foot trench or pit in earth in 10 minutes. Can be used as improvised club (1d4 damage).</td>
+<td align="left">Broad, spade-shaped iron blade hafted onto a sturdy ash-wood handle with a T-grip.</td>
+</tr>
+<tr>
+<td align="left"><strong>Iron Spikes (Bag of 10)</strong></td>
+<td align="left">5 gp</td>
+<td align="left">1 Slot</td>
+<td align="left">Hammered under doors or into wall cracks to wedge doors shut or anchor pitons.</td>
+<td align="left">Heavy, square-cut iron wedges with broad flat heads and eyelet loops for cordage.</td>
+</tr>
+<tr>
+<td align="left"><strong>Block &amp; Tackle</strong></td>
+<td align="left">3 gp</td>
+<td align="left">1 Slot</td>
+<td align="left">Set of pulleys allowing a wielder to lift 4x their normal lifting capacity.</td>
+<td align="left">Pair of brass pulley wheels set in iron housings with a braided cord runner.</td>
+</tr>
+<tr>
+<td align="left"><strong>Camping Supplies</strong></td>
+<td align="left">5 gp</td>
+<td align="left">1 Slot</td>
+<td align="left">Includes bedroll and simple 2-person canvas shelter. Needed in order to get the benefit of 8 hours sleep in adverse conditions.</td>
+<td align="left">Compact oilskin roll containing a wool blanket, tin mess gear, flint striker, and rolled canvas.</td>
+</tr>
+<tr>
+<td align="left"><strong>Explorer's Pack (Kit)</strong></td>
+<td align="left">40 gp</td>
+<td align="left">1 Slot</td>
+<td align="left"><strong>Bundled Kit</strong>: Combines bedroll, mess kit, tinderbox, torches, 50ft rope 1 slot.<br><br>Has "enough" torches and rope.</td>
+<td align="left">Heavy canvas backpack with leather side-straps holding a rolled bedroll and coiled rope.</td>
+</tr>
+<tr>
+<td align="left"><strong>Delver's Heavy Kit (Kit)</strong></td>
+<td align="left">20 gp</td>
+<td align="left">1 Slot</td>
+<td align="left"><strong>Bundled Kit</strong>: Combines shovel, crowbar, iron spikes, hammer, block &amp; tackle, and grappling hook into 1 slot.</td>
+<td align="left">Reinforced leather harness satchel fitted with brass buckles and exterior tool loops.</td>
+</tr>
+</tbody>
+</table>
+<h2 data-heading="2. The Apothecary &amp; Herbalist" dir="auto">2. The Apothecary &amp; Herbalist</h2>
+<ul>
+<li dir="auto"><strong>Suggested Proprietor Professions</strong>: Apothecary, Herbalist, Physiker, Field Medic, Chirurgeon, Alchemist-Healer.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">Item Name</th>
+<th align="left">Cost</th>
+<th align="left">Item Slots</th>
+<th align="left">Mechanics</th>
+<th align="left">Physical Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><strong>Healing Potion</strong></td>
+<td align="left">50 gp</td>
+<td align="left">1 Slot</td>
+<td align="left">Action to drink or administer. Restores <strong>2d4+4 HP</strong>. Effervescent red elixir.</td>
+<td align="left">Simple glass vial with gilded stopper containing a glowing, ruby-red viscous liquid.</td>
+</tr>
+<tr>
+<td align="left"><strong>Greater Healing Potion</strong></td>
+<td align="left">150 gp</td>
+<td align="left">1 Slot</td>
+<td align="left">Action to drink or administer. Restores <strong>3d6+6 HP</strong>. Concentrated crimson elixir.</td>
+<td align="left">Ornate glass vial with gilded stopper containing a glowing, ruby-red viscous liquid.</td>
+</tr>
+<tr>
+<td align="left"><strong>Supreme Healing Potion</strong></td>
+<td align="left">450 gp</td>
+<td align="left">1 Slot</td>
+<td align="left">Action to drink or administer. Restores <strong>4d8+8 HP</strong>. Radiant crimson elixir.</td>
+<td align="left">Crystal flask etched with gold runes, holding a shimmering, radiant crimson potion.</td>
+</tr>
+<tr>
+<td align="left">Healer's Kit</td>
+<td align="left">10 gp</td>
+<td align="left">1 Slot</td>
+<td align="left">Can be used to stabilize dying people and treat minor illnesses.</td>
+<td align="left">A package of various dried herbs, medical tools and common linens.</td>
+</tr>
+<tr>
+<td align="left"><strong>Antitoxin Vial</strong></td>
+<td align="left">10 gp</td>
+<td align="left">1 Slot</td>
+<td align="left">Drinking grants immunity to the effects of poison for one hour.</td>
+<td align="left">Small amber glass vial containing a thick, chalky charcoal-grey liquid with a bitter smell.</td>
+</tr>
+<tr>
+<td align="left"><strong>Plague Mask</strong></td>
+<td align="left">8 gp</td>
+<td align="left">1 Slot</td>
+<td align="left">Grants advantage on saves vs. inhaled gas, spores, dust, and airborne toxins.</td>
+<td align="left">Beaked leather mask fitted with glass eye-lenses and a nose chamber filled with dried lavender.</td>
+</tr>
+<tr>
+<td align="left"><strong>Physician's Field Bag (Kit)</strong></td>
+<td align="left">75 gp</td>
+<td align="left">1 Slot</td>
+<td align="left"><strong>Bundled Kit</strong>: Combines Plague Mask, Healer's Kit, Antitoxin into 1 slot. Has "enough" (no need to track individual uses).</td>
+<td align="left">Sturdy black leather doctor's satchel with internal glass-vial racks and brass clasps.</td>
+</tr>
+</tbody>
+</table>
+<h1 data-heading="The Alchemist &amp; Tinker's Workshop" dir="auto">The Alchemist &amp; Tinker's Workshop</h1>
+<ul>
+<li dir="auto"><strong>Suggested Proprietor Professions</strong>: Tinker, Locksmith, Alchemist, Clockmaker, Gadgeteer, Lockbreaker, Trap-smith.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">Item Name</th>
+<th align="left">Cost</th>
+<th align="left">Item Slots</th>
+<th align="left">Mechanics</th>
+<th align="left">Physical Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><strong>Alchemist's Fire</strong></td>
+<td align="left">50 gp</td>
+<td align="left">1 Slot</td>
+<td align="left">Thrown (Range 8). Target takes 1d4 fire damage at start of each turn until extinguishing it (Action).</td>
+<td align="left">Flask of sticky, amber-colored fluid that spontaneously ignites upon contact with air.</td>
+</tr>
+<tr>
+<td align="left"><strong>Vial of Acid</strong></td>
+<td align="left">25 gp</td>
+<td align="left">1 Slot</td>
+<td align="left">Thrown (Range 8). Deals 2d6 acid damage to target creature or corrodes small lock/latch.</td>
+<td align="left">Heavy green-tinted glass vial reinforced with lead wire, holding a bubbling clear acid.</td>
+</tr>
+<tr>
+<td align="left"><strong>Vial of Pitch</strong></td>
+<td align="left">2 gp</td>
+<td align="left">1 Slot</td>
+<td align="left">Highly flammable sticky goo. Covers 1 space. Ignites when struck by fire, burning for 1d6 fire damage.</td>
+<td align="left">Thick clay crock sealed with pitch-cork, containing black tarry pine resin.</td>
+</tr>
+<tr>
+<td align="left"><strong>Tanglefoot Bag</strong></td>
+<td align="left">50 gp</td>
+<td align="left">1 Slot</td>
+<td align="left">Thrown (Range 4). Engulfs target in sticky foam, imposing the Restrained condition (Escape DC 12).</td>
+<td align="left">Tough leather pouch laced with drawstring cord, bulging with expanding resin foam.</td>
+</tr>
+<tr>
+<td align="left"><strong>Smokestick / Smoke Bomb</strong></td>
+<td align="left">15 gp</td>
+<td align="left">1 Slot</td>
+<td align="left">Creates 3x3 area of thick smoke for 2 turns (Range 6). Grants Cover to all within.</td>
+<td align="left">Short cardboard cylinder wrapped in wax-paper with a pull-string igniter at one end.</td>
+</tr>
+<tr>
+<td align="left"><strong>Flash Pellet / Flash Powder</strong></td>
+<td align="left">25 gp</td>
+<td align="left">1 Slot</td>
+<td align="left">Thrown against hard surface. Blinds all looking at it within 10 ft until end of next turn (DC 12 CON save).</td>
+<td align="left">Small, brittle clay sphere packed with gray alchemical flash powder and crushed flint.</td>
+</tr>
+<tr>
+<td align="left"><strong>Lock Picks / Thieves' Tools</strong></td>
+<td align="left">5 gp</td>
+<td align="left">1 Slot</td>
+<td align="left">Essential for picking locks and disarming mechanical traps (Might/Finesse check vs. DC).</td>
+<td align="left">Leather roll housing precision steel tension wrenches, picks, rake wires, and small file.</td>
+</tr>
+<tr>
+<td align="left"><strong>Caltrops (Bag of 100)</strong></td>
+<td align="left">5 gp</td>
+<td align="left">1 Slot</td>
+<td align="left">Covers 1 space. Creatures entering take 1 damage and stop moving (half speed avoids).</td>
+<td align="left">Canvas pouch filled with four-pointed forged steel jacks designed to land with one point up.</td>
+</tr>
+<tr>
+<td align="left"><strong>Ball Bearings (Bag of 1,000)</strong></td>
+<td align="left">2 gp</td>
+<td align="left">1 Slot</td>
+<td align="left">Covers 2x2 area. Creatures crossing must make DC 10 DEX save or fall Prone.</td>
+<td align="left">Leather drawstring sack filled with polished 1/4-inch steel spheres.</td>
+</tr>
+<tr>
+<td align="left"><strong>Hunting Trap</strong></td>
+<td align="left">10 gp</td>
+<td align="left">1 Slot</td>
+<td align="left">Snaps shut when stepped on. Deals 1d4 damage and Restrains target (Escape DC 13 STR).</td>
+<td align="left">Saw-toothed steel jaw trap with a central pressure plate and heavy anchor chain.</td>
+</tr>
+<tr>
+<td align="left">Trickster's Kit</td>
+<td align="left">50 gp</td>
+<td align="left">1 Slot</td>
+<td align="left">Combines Ball Bearings, Caltrops, Smokestick, Flash pellets, Tanglefoot bag.<br><br>Contains "enough" to use one each per encounter.</td>
+<td align="left">Flame-retardant treated leather pouch with compartmentalized felt dividers.</td>
+</tr>
+<tr>
+<td align="left"><strong>Burglar's Satchel (Kit)</strong></td>
+<td align="left">50 gp</td>
+<td align="left">1 Slot</td>
+<td align="left"><strong>Bundled Kit</strong>: Combines Lock Picks, Ball Bearings, Caltrops, Glass Cutter, and Bell Kit into 1 slot.<br><br>Has "enough" to use once per encounter.</td>
+<td align="left">Dark velvet-lined leather satchel with silent wooden toggles and padded pockets.</td>
+</tr>
+<tr>
+<td align="left"><strong>Alchemist's Demolition Pouch (Kit)</strong></td>
+<td align="left">85 gp</td>
+<td align="left">1 Slot</td>
+<td align="left"><strong>Bundled Kit</strong>: Combines Alchemist's Fire,  Acid Vial, Smokestick into 1 slot.<br><br>Has "enough" to use once per encounter.</td>
+<td align="left">Flame-retardant treated leather pouch with compartmentalized felt dividers.</td>
+</tr>
+</tbody>
+</table>
+<h1 data-heading="The Arcanum &amp; Sanctum" dir="auto">The Arcanum &amp; Sanctum</h1>
+<p dir="auto">A repository for ritual supplies, spellcasting components, sacred relics, scholarly texts, and rare inks.</p>
+<ul>
+<li dir="auto"><strong>Suggested Proprietor Professions</strong>: Sage, Scribe, Temple Curator, Arcane Merchant, Ritualist, Relic Collector.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">Item Name</th>
+<th align="left">Cost</th>
+<th align="left">Item Slots</th>
+<th align="left">Mechanics</th>
+<th align="left">Physical Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Arcane Focus</td>
+<td align="left">50 gp</td>
+<td align="left">1 Slot</td>
+<td align="left">Required for the casting of spells.</td>
+<td align="left">A staff, wand, orb or similar.</td>
+</tr>
+<tr>
+<td align="left"><strong>Holy Water (Flask)</strong></td>
+<td align="left">25 gp</td>
+<td align="left">1 Slot</td>
+<td align="left">Thrown (Range 4). Deals 2d6 radiant damage to Fiends and Undead.</td>
+<td align="left">Silver-embossed glass flask with a holy symbol seal, containing sparkling consecrated water.</td>
+</tr>
+<tr>
+<td align="left"><strong>Component Pouch</strong></td>
+<td align="left">25 gp</td>
+<td align="left">1 Slot</td>
+<td align="left">Holds all standard non-costly material spell components for spellcasters.</td>
+<td align="left">Sturdy belt pouch with dozens of small pockets holding dried herbs, crystals, and powders.</td>
+</tr>
+<tr>
+<td align="left"><strong>Scholar's Arcane Satchel (Kit)</strong></td>
+<td align="left">40 gp</td>
+<td align="left">1 Slot</td>
+<td align="left"><strong>Bundled Kit</strong>: Combines Lore Book, Ink Pen, 1-oz Rare Ink, 10 Parchment Sheets, and Magnifying Glass into 1 slot.</td>
+<td align="left">Sturdy leather satchel with buckle straps, quill sleeves, and inkwell holsters.</td>
+</tr>
+<tr>
+<td align="left"><strong>Ritualist's Pouch (Kit)</strong></td>
+<td align="left">35 gp</td>
+<td align="left">1 Slot</td>
+<td align="left"><strong>Bundled Kit</strong>: Combines Component Pouch, Incense Blocks, Holy Water, and Chalk into 1 slot.</td>
+<td align="left">Embroidered velvet pouch cinched with silk cord and silver bells.</td>
+</tr>
+</tbody>
+</table>
+<h1 data-heading="The Blacksmith, Weapon Smith, Bowyer, Armor Smith, Gunsmith" dir="auto">The Blacksmith, Weapon Smith, Bowyer, Armor Smith, Gunsmith</h1>
+<p dir="auto">Blacksmiths are common even in villages, but other types of smithies are less rare. Stores will tend to focus on just one type of good, but might contain a few special items of different types.</p>
+	</div>
+</body>
+</html>
