@@ -92,13 +92,47 @@
 			background-color: var(--background-secondary);
 			color: var(--interactive-accent);
 		}
-		blockquote, .callout {
+		blockquote {
 			margin: 16px 0;
 			padding: 14px 18px;
 			background-color: var(--background-secondary);
 			border-left: 4px solid var(--interactive-accent);
 			border-radius: 4px;
 		}
+		.callout {
+			margin: 16px 0;
+			background-color: var(--background-secondary);
+			border-left: 4px solid var(--interactive-accent);
+			border-radius: 4px;
+			overflow: hidden;
+		}
+		.callout-title {
+			display: flex;
+			align-items: center;
+			gap: 8px;
+			padding: 12px 16px;
+			background-color: rgba(255, 255, 255, 0.05);
+			font-weight: 700;
+			font-size: 1.05em;
+		}
+		.callout-icon {
+			display: flex;
+			align-items: center;
+		}
+		.callout-icon svg {
+			width: 18px;
+			height: 18px;
+		}
+		.callout-content {
+			padding: 12px 16px;
+		}
+		.callout[data-callout="info"] { border-left-color: var(--callout-info); }
+		.callout[data-callout="note"] { border-left-color: var(--callout-info); }
+		.callout[data-callout="warning"] { border-left-color: var(--callout-warning); }
+		.callout[data-callout="danger"] { border-left-color: var(--callout-danger); }
+		.callout[data-callout="error"] { border-left-color: var(--callout-danger); }
+		.callout[data-callout="tip"] { border-left-color: var(--callout-tip); }
+		.callout[data-callout="success"] { border-left-color: var(--callout-tip); }
 		pre {
 			background-color: var(--background-secondary);
 			padding: 14px;
