@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Friends</title>
+	<style>
+		:root {
+			--background-primary: #1e1e2e;
+			--background-secondary: #181825;
+			--background-secondary-alt: #181825;
+			--background-modifier-border: #313244;
+			--background-modifier-form-field: #11111b;
+			--background-modifier-active-hover: #313244;
+			--text-normal: #cdd6f4;
+			--text-muted: #a6adc8;
+			--text-on-accent: #11111b;
+			--interactive-accent: #89b4fa;
+			--font-interface: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+			--font-text: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+			--callout-info: #89b4fa;
+			--callout-warning: #f9e2af;
+			--callout-danger: #f38ba8;
+			--callout-tip: #a6e3a1;
+		}
+		html {
+			overflow-y: auto !important;
+		}
+		body {
+			margin: 0;
+			padding: 32px 24px;
+			background-color: var(--background-primary);
+			color: var(--text-normal);
+			font-family: var(--font-interface);
+			line-height: 1.6;
+			overflow-y: auto !important;
+			pointer-events: auto !important;
+		}
+		.container {
+			max-width: 920px;
+			margin: 0 auto;
+		}
+		h1, h2, h3, h4, h5, h6 {
+			color: #cba6f7;
+			margin-top: 1.4em;
+			margin-bottom: 0.6em;
+			line-height: 1.3;
+		}
+		a {
+			color: var(--interactive-accent);
+			text-decoration: none;
+			pointer-events: auto !important;
+		}
+		a:hover {
+			text-decoration: underline;
+		}
+		a.internal-link.muted {
+			color: var(--text-muted);
+			text-decoration: none;
+			cursor: default;
+			opacity: 0.85;
+		}
+		img.published-img {
+			max-width: 100%;
+			height: auto;
+			border-radius: 6px;
+			margin: 12px 0;
+		}
+		img.published-img.center {
+			display: block;
+			margin: 16px auto;
+		}
+		img.published-img.right {
+			float: right;
+			margin: 0 0 16px 16px;
+		}
+		img.published-img.left {
+			float: left;
+			margin: 0 16px 16px 0;
+		}
+		table {
+			width: 100%;
+			border-collapse: collapse;
+			margin: 16px 0;
+		}
+		th, td {
+			padding: 10px 14px;
+			border: 1px solid var(--background-modifier-border);
+			text-align: left;
+		}
+		th {
+			background-color: var(--background-secondary);
+			color: var(--interactive-accent);
+		}
+		blockquote {
+			margin: 16px 0;
+			padding: 14px 18px;
+			background-color: var(--background-secondary);
+			border-left: 4px solid var(--interactive-accent);
+			border-radius: 4px;
+		}
+		.callout {
+			margin: 16px 0;
+			background-color: var(--background-secondary);
+			border-left: 4px solid var(--interactive-accent);
+			border-radius: 4px;
+			overflow: hidden;
+		}
+		.callout-title {
+			display: flex;
+			align-items: center;
+			gap: 8px;
+			padding: 12px 16px;
+			background-color: rgba(255, 255, 255, 0.05);
+			font-weight: 700;
+			font-size: 1.05em;
+		}
+		.callout-icon {
+			display: flex;
+			align-items: center;
+		}
+		.callout-icon svg {
+			width: 18px;
+			height: 18px;
+		}
+		.callout-content {
+			padding: 12px 16px;
+		}
+		.callout[data-callout="info"] { border-left-color: var(--callout-info); }
+		.callout[data-callout="note"] { border-left-color: var(--callout-info); }
+		.callout[data-callout="warning"] { border-left-color: var(--callout-warning); }
+		.callout[data-callout="danger"] { border-left-color: var(--callout-danger); }
+		.callout[data-callout="error"] { border-left-color: var(--callout-danger); }
+		.callout[data-callout="tip"] { border-left-color: var(--callout-tip); }
+		.callout[data-callout="success"] { border-left-color: var(--callout-tip); }
+		pre {
+			background-color: var(--background-secondary);
+			padding: 14px;
+			border-radius: 6px;
+			overflow-x: auto;
+			border: 1px solid var(--background-modifier-border);
+		}
+		code {
+			font-family: monospace;
+			background-color: rgba(255, 255, 255, 0.08);
+			padding: 2px 6px;
+			border-radius: 4px;
+		}
+		.rpg-published-card {
+			margin: 20px 0;
+			background-color: var(--background-secondary);
+			border: 1px solid var(--background-modifier-border);
+			border-radius: 8px;
+			padding: 16px;
+			box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+		}
+		.rpg-published-card img {
+			max-width: 100%;
+			height: auto;
+			border-radius: 6px;
+		}
+		
+/* Shared UI Fallback Styles */
+.Flexbox_container { display: flex; width: 100%; box-sizing: border-box; }
+.Flexbox_inline { display: inline-flex; width: auto; }
+.Flexbox_child { box-sizing: border-box; min-width: 0; }
+.Text_body { color: var(--text-normal); font-family: var(--font-text, system-ui); }
+.Text_muted { color: var(--text-muted); font-family: var(--font-text, system-ui); font-size: 0.9em; }
+.Text_heading { color: var(--text-normal); font-weight: 600; margin-top: 0; margin-bottom: 0.5rem; }
+.Text_error { color: var(--text-error, #f38ba8); font-weight: 500; }
+.Text_success { color: var(--text-success, #a6e3a1); font-weight: 500; }
+.Text_pill { background-color: var(--background-modifier-active-hover, rgba(255,255,255,0.1)); color: var(--text-normal); padding: 2px 8px; border-radius: 9999px; font-size: 0.85em; font-weight: 500; display: inline-block; }
+.Card_card { border: 1px solid var(--background-modifier-border); background: var(--background-secondary-alt); border-radius: 10px; padding: 18px 22px; margin: 14px 0; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); font-family: var(--font-interface); }
+.Card_compact { padding: 10px 14px; margin: 6px 0; }
+.Card_cardHeader { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; padding-bottom: 8px; border-bottom: 1px solid var(--background-modifier-border); }
+.Card_cardTitle { margin: 0; font-size: 1.15em; font-weight: 700; color: var(--text-normal); }
+.Card_cardDescription { font-size: 0.9em; color: var(--text-muted); margin: 4px 0 14px 0; font-style: italic; }
+.Card_cardBody { margin: 10px 0; }
+.Card_cardFooter { margin-top: 14px; padding-top: 10px; border-top: 1px solid var(--background-modifier-border); }
+.Badge_badge { display: inline-flex; align-items: center; font-size: 0.8em; font-weight: 600; padding: 3px 10px; border-radius: 12px; line-height: 1.2; }
+.Badge_badgeAccent { background: var(--interactive-accent); color: var(--text-on-accent, #11111b); }
+.Badge_badgeMuted { background: var(--background-modifier-form-field); color: var(--text-muted); border: 1px solid var(--background-modifier-border); font-family: var(--font-monospace); }
+.Badge_badgeOutline { background: transparent; color: var(--text-normal); border: 1px solid var(--background-modifier-border); }
+.DetailRow_detailRow { display: flex; flex-direction: column; background: var(--background-secondary-alt); padding: 8px 12px; border-radius: 6px; border: 1px solid var(--background-modifier-border); }
+.DetailRow_detailLabel { font-size: 0.75em; text-transform: uppercase; color: var(--text-muted); font-weight: 600; letter-spacing: 0.5px; }
+.DetailRow_detailValue { font-size: 1em; font-weight: 600; color: var(--text-normal); }
+.Button_btn { cursor: pointer; font-weight: 600; padding: 6px 16px; border-radius: 6px; border: 1px solid var(--background-modifier-border); background: var(--background-primary); color: var(--text-normal); }
+.Button_modCta { background: var(--interactive-accent); color: var(--text-on-accent, #11111b); border: none; }
+.Layout_toolbar { display: flex; gap: 12px; align-items: center; margin-bottom: 1rem; }
+.Layout_formRow { display: flex; gap: 12px; align-items: center; margin-bottom: 12px; }
+.Layout_actionGroup { display: flex; gap: 8px; align-items: center; margin-top: 0.5rem; }
+.Forms_formField { display: flex; flex-direction: column; gap: 6px; margin-bottom: 12px; width: 100%; }
+.Forms_label { font-size: 0.85em; font-weight: 600; color: var(--text-normal); }
+.Forms_select, .Forms_input { width: 100%; padding: 6px 10px; background: var(--background-modifier-form-field); border: 1px solid var(--background-modifier-border); color: var(--text-normal); border-radius: 4px; }
+
+	</style>
+</head>
+<body>
+	<div class="container">
+		<h1>Friends</h1>
+		<div class="rpg-published-card npc-link-card">
+<div style="background-color:var(--background-secondary);border:1px solid var(--interactive-accent);border-radius:8px;padding:10px 14px;margin-bottom:8px;cursor:pointer;transition:transform 0.1s ease" class="" data-second-screen-entity="{&quot;id&quot;:&quot;npc-calder-vane-8921&quot;,&quot;name&quot;:&quot;Calder Vane&quot;,&quot;subtitle&quot;:&quot;Thief (Human)&quot;,&quot;imagePath&quot;:&quot;Attachments/calder-vane-portrait-1.webp&quot;,&quot;type&quot;:&quot;npc&quot;,&quot;isAdHoc&quot;:true}"><div class="Card_cardBody"><div class="Layout_toolbar"><div style="flex-direction:row;flex-wrap:nowrap;justify-content:flex-start;align-items:center;gap:12px;width:100%" class="Flexbox_container"><div style="flex-shrink:0" class="Flexbox_child"><img style="width:256px;height:256px;border-radius:8px;object-fit:cover;border:1px solid var(--background-modifier-border)" alt="Calder Vane" src="attachments/calder-vane-portrait-1.webp" referrerpolicy="no-referrer"></div><div style="align-self:flex-start;flex:1" class="Flexbox_child"><div style="flex-direction:column;flex-wrap:nowrap;justify-content:flex-start;align-items:stretch;gap:8px;flex:1" class="Flexbox_container"><div class="Flexbox_child"><div style="flex-direction:row;flex-wrap:nowrap;justify-content:flex-start;align-items:stretch;gap:8px" class="Flexbox_container"><div class="Flexbox_child"><span class="Text_body"><span class="internal-link muted"><strong>Calder Vane</strong></span></span></div><div style="align-self:baseline" class="Flexbox_child"><span class="Text_muted">Male</span></div><div style="align-self:baseline" class="Flexbox_child"><span class="Text_muted">Human</span></div><div style="align-self:baseline" class="Flexbox_child"><span class="Text_muted">Thief</span></div></div></div><div class="Flexbox_child"><div style="flex-direction:row;flex-wrap:nowrap;justify-content:flex-start;align-items:stretch;gap:8px" class="Flexbox_container"><div class="Flexbox_child">Realm: Kareka</div></div></div><div class="Flexbox_child">Calder Vane features a sharply angled, roguish face framed by unkempt dark hair and a persistent shadow of stubble. His frayed, dark-green tunic is patched at the elbows and heavily fitted with hidden interior pockets for stashing pilfered goods.</div><div class="Flexbox_child">This slender human commoner moves with surprising agility, constantly darting his eyes from side to side while subtly adjusting his cloak. An accomplished archer, Calder is the one who first discovered the secret of the Crowns of Obscurity and began freeing the village. He's gained significant clout within Velders as a result and is a de-facto leader in an unsteady truce with Joffrey.</div></div></div></div></div></div></div>
+</div>
+<div class="rpg-published-card npc-link-card">
+<div style="background-color:var(--background-secondary);border:1px solid var(--interactive-accent);border-radius:8px;padding:10px 14px;margin-bottom:8px;cursor:pointer;transition:transform 0.1s ease" class="" data-second-screen-entity="{&quot;id&quot;:&quot;npc-phineas-carpenter-0105&quot;,&quot;name&quot;:&quot;Phineas Carpenter&quot;,&quot;subtitle&quot;:&quot;Carpenter (Halfling)&quot;,&quot;imagePath&quot;:&quot;Attachments/phineas-carpenter-portrait-3.webp&quot;,&quot;type&quot;:&quot;npc&quot;,&quot;isAdHoc&quot;:true}"><div class="Card_cardBody"><div class="Layout_toolbar"><div style="flex-direction:row;flex-wrap:nowrap;justify-content:flex-start;align-items:center;gap:12px;width:100%" class="Flexbox_container"><div style="flex-shrink:0" class="Flexbox_child"><img style="width:256px;height:256px;border-radius:8px;object-fit:cover;border:1px solid var(--background-modifier-border)" alt="Phineas Carpenter" src="attachments/phineas-carpenter-portrait-3.webp" referrerpolicy="no-referrer"></div><div style="align-self:flex-start;flex:1" class="Flexbox_child"><div style="flex-direction:column;flex-wrap:nowrap;justify-content:flex-start;align-items:stretch;gap:8px;flex:1" class="Flexbox_container"><div class="Flexbox_child"><div style="flex-direction:row;flex-wrap:nowrap;justify-content:flex-start;align-items:stretch;gap:8px" class="Flexbox_container"><div class="Flexbox_child"><span class="Text_body"><span class="internal-link muted"><strong>Phineas Carpenter</strong></span></span></div><div style="align-self:baseline" class="Flexbox_child"><span class="Text_muted">Male</span></div><div style="align-self:baseline" class="Flexbox_child"><span class="Text_muted">Halfling</span></div><div style="align-self:baseline" class="Flexbox_child"><span class="Text_muted">Carpenter</span></div></div></div><div class="Flexbox_child"><div style="flex-direction:row;flex-wrap:nowrap;justify-content:flex-start;align-items:stretch;gap:8px" class="Flexbox_container"><div class="Flexbox_child">Realm: Kareka</div></div></div><div class="Flexbox_child">Phineas Carpenter has a leathery, weathered face framed by a thatch of unruly graying hair, and his tough, calloused hands bear the permanent stains of countless hours working with resin and timber. He wears a heavy, patched canvas apron stiffened by decades of sawdust and wood glue over a faded, oversized tunic that hangs loosely from his boney frame. Despite his meager living in poverty, his sharp eyes remain constantly observant and hard to read, missing nothing in the grain of the wood or the strangers passing by his ramshackle workshop.</div><div class="Flexbox_child">Two odd, flesh-colored antlers sprout from above his bushy eyebrows, curving slightly forward over his furrowed forehead. He twitches his head whenever the fleshy growths itch, often running his thumbs along the grain of a wooden plank to steady himself. Broad-shouldered and stout, he wears coarse, grease-stained trousers held up by a frayed rope belt.</div></div></div></div></div></div></div>
+</div>
+<div class="rpg-published-card npc-link-card">
+<div style="background-color:var(--background-secondary);border:1px solid var(--interactive-accent);border-radius:8px;padding:10px 14px;margin-bottom:8px;cursor:pointer;transition:transform 0.1s ease" class="" data-second-screen-entity="{&quot;id&quot;:&quot;npc-sylva-greenbriar-2157&quot;,&quot;name&quot;:&quot;Sylva Greenbriar&quot;,&quot;subtitle&quot;:&quot;Herbalist (Dryad)&quot;,&quot;imagePath&quot;:&quot;Attachments/sylva-greenbriar-portrait-1.webp&quot;,&quot;type&quot;:&quot;npc&quot;,&quot;isAdHoc&quot;:true}"><div class="Card_cardBody"><div class="Layout_toolbar"><div style="flex-direction:row;flex-wrap:nowrap;justify-content:flex-start;align-items:center;gap:12px;width:100%" class="Flexbox_container"><div style="flex-shrink:0" class="Flexbox_child"><img style="width:256px;height:256px;border-radius:8px;object-fit:cover;border:1px solid var(--background-modifier-border)" alt="Sylva Greenbriar" src="attachments/sylva-greenbriar-portrait-1.webp" referrerpolicy="no-referrer"></div><div style="align-self:flex-start;flex:1" class="Flexbox_child"><div style="flex-direction:column;flex-wrap:nowrap;justify-content:flex-start;align-items:stretch;gap:8px;flex:1" class="Flexbox_container"><div class="Flexbox_child"><div style="flex-direction:row;flex-wrap:nowrap;justify-content:flex-start;align-items:stretch;gap:8px" class="Flexbox_container"><div class="Flexbox_child"><span class="Text_body"><span class="internal-link muted"><strong>Sylva Greenbriar</strong></span></span></div><div style="align-self:baseline" class="Flexbox_child"><span class="Text_muted">Female</span></div><div style="align-self:baseline" class="Flexbox_child"><span class="Text_muted">Dryad</span></div><div style="align-self:baseline" class="Flexbox_child"><span class="Text_muted">Herbalist</span></div></div></div><div class="Flexbox_child"><div style="flex-direction:row;flex-wrap:nowrap;justify-content:flex-start;align-items:stretch;gap:8px" class="Flexbox_container"><div class="Flexbox_child">Realm: Kareka</div></div></div><div class="Flexbox_child">Sylva Greenbriar features a striking, wood-grained face marred by a thick, pale scar slicing directly across her milky-white left eye. She wears a tightly wrapped cloak woven from coarse burlap and autumn leaves to conceal her missing left arm.</div><div class="Flexbox_child">This lithe dryad moves through the cobblestone streets with an uneasy, swaying grace, constantly guarding her missing limb. Her wooden features and forest-green skin draw wary glances from passersby.</div></div></div></div></div></div></div>
+</div>
+<div class="rpg-published-card npc-link-card">
+<div style="background-color:var(--background-secondary);border:1px solid var(--interactive-accent);border-radius:8px;padding:10px 14px;margin-bottom:8px;cursor:pointer;transition:transform 0.1s ease" class="" data-second-screen-entity="{&quot;id&quot;:&quot;npc-orion-vann-0234&quot;,&quot;name&quot;:&quot;Orion Vann&quot;,&quot;subtitle&quot;:&quot;Lumberjack (Frogfolk)&quot;,&quot;imagePath&quot;:&quot;Attachments/orion-vann-portrait-8.webp&quot;,&quot;type&quot;:&quot;npc&quot;,&quot;isAdHoc&quot;:true}"><div class="Card_cardBody"><div class="Layout_toolbar"><div style="flex-direction:row;flex-wrap:nowrap;justify-content:flex-start;align-items:center;gap:12px;width:100%" class="Flexbox_container"><div style="flex-shrink:0" class="Flexbox_child"><img style="width:256px;height:256px;border-radius:8px;object-fit:cover;border:1px solid var(--background-modifier-border)" alt="Orion Vann" src="attachments/orion-vann-portrait-8.webp" referrerpolicy="no-referrer"></div><div style="align-self:flex-start;flex:1" class="Flexbox_child"><div style="flex-direction:column;flex-wrap:nowrap;justify-content:flex-start;align-items:stretch;gap:8px;flex:1" class="Flexbox_container"><div class="Flexbox_child"><div style="flex-direction:row;flex-wrap:nowrap;justify-content:flex-start;align-items:stretch;gap:8px" class="Flexbox_container"><div class="Flexbox_child"><span class="Text_body"><span class="internal-link muted"><strong>Orion Vann</strong></span></span></div><div style="align-self:baseline" class="Flexbox_child"><span class="Text_muted">Male</span></div><div style="align-self:baseline" class="Flexbox_child"><span class="Text_muted">Frogfolk</span></div><div style="align-self:baseline" class="Flexbox_child"><span class="Text_muted">Lumberjack</span></div></div></div><div class="Flexbox_child">Orion Vann is a sturdy frogfolk lumberjack whose colorful, mottled emerald-and-amber skin is dusted with a constellation of darker freckles across his broad cheeks and snout. His face is dominated by a perpetually crooked jaw, the result of an old timber accident, and a strange, bristly patch of moss-like growth on his chin that he proudly calls his beard. He wears a heavy, salt-stained canvas tunic patched with cured hide, perfectly suited for hauling heavy logs through the misty river valleys.</div><div class="Flexbox_child">Orion first met the party at the entrance to Velders, so he was not among the lumberjacks with Calder. He volunteers with the town watch.</div></div></div></div></div></div></div>
+</div>
+	</div>
+</body>
+</html>
